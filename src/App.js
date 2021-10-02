@@ -1,9 +1,11 @@
-import React from "react";
+import React,{ Fragment }  from "react";
 import TodoCounter from "./components/todo-counter";
 import TodoSearch from "./components/todo-search";
 import TodoList from "./components/todo-list";
 import TodoItem from "./components/todo-item";
 import CreateTodoButton from "./components/create-todo-button";
+import GlobalStyle from './components/styles/globalStyles.js'
+
 
 function App() {
 
@@ -13,9 +15,11 @@ function App() {
     {text: 'Ver anime', compled:false},
 
 
-  ]
+  ];
+
   return (
-    <React.Fragment>
+    <Fragment>
+        <GlobalStyle />
       <TodoCounter/>
         <TodoSearch/>
         <TodoList>
@@ -24,7 +28,7 @@ function App() {
           })}
         </TodoList>
        <CreateTodoButton/>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
