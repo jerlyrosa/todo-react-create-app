@@ -110,4 +110,10 @@ export default createGlobalStyle`
     }
     }
 
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
+
 `;

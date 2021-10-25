@@ -19,15 +19,15 @@ function App() {
 
   return (
     <Fragment>
-        <GlobalStyle />
-      <TodoCounter/>
-        <TodoSearch/>
-        <TodoList>
-          {todos.map((item,index)=>{
-            return <TodoItem key={item.text} text={item.text} />
-          })}
-        </TodoList>
-       <CreateTodoButton/>
+      <GlobalStyle />
+      <TodoCounter />
+      <TodoSearch />
+      <TodoList>
+        {todos.map((item, index) => {
+          return <TodoItem key={item.text} text={item.text} />;
+        })}
+      </TodoList>
+      <CreateTodoButton />
     </Fragment>
   );
 }
