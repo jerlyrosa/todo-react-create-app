@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import styled from "styled-components";
 import Checkbox from "./checkbox";
 import { IconClose } from "./icons/icons";
+import mq from "./styles/mq";
 
 const TodoItem = (props) => {
 
@@ -30,6 +31,7 @@ const Container = styled.div`
  display: grid;
  grid-template-columns: 1fr 10fr 1fr;
  align-items: center;
+ padding: 0 2rem;
 `;
 
 const ButtonClose= styled.button`
@@ -47,7 +49,9 @@ const ButtonClose= styled.button`
 `;
 
 const StylesList = styled.h6`
-  margin-left: 0;
+  ${mq.md}{
+    margin-left: 0;
+  }
   font-weight: initial;
   text-decoration: ${(props) => (props.checked ? "line-through;" : "none")};
   font-style: ${(props) => (props.checked ? "italic" : "none")};

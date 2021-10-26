@@ -5,7 +5,7 @@ const TodoList =(props)=>{
     return (
         <section> 
             <Container>
-            <ul>
+            <ul style={{ padding: 0 }}> 
                 {props.children}
             </ul>
             </Container>
