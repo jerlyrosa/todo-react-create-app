@@ -5,9 +5,9 @@ export const colors = {
             dark: "#113CFC",
         }, 
         secondary:{
-            base:"#00bcd4",
+            base:"#2196f3",
             light: "#32DBC6",
-            dark: "#4D6DE3",
+            dark: "#3f80a7",
         },
         text_color: "#FFFFFF",
         cta_bg: "#79B4B7",

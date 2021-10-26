@@ -6,11 +6,11 @@ const CreateTodoButton =(props)=>{
 
     return (
         <Button 
-        bgColor={colors.cta_bg} 
+        bgColor={colors.primary.base} 
         textColor={colors.text_cta} 
         shadowColor={"rgba(115, 185, 255, 0.5)"}
         bgHover={colors.cta_hover}>
-        +
+              Agregar Nueva
         </Button>
     )
 }
@@ -21,7 +21,8 @@ export default CreateTodoButton;
 const Button = styled.button`
 
 ${({bgColor, textColor, shadowColor, bgHover}) => css`
-    display: inline-block;
+    display: flex;
+    margin: 0 auto;
     text-align: center;
     vertical-align: middle;
     user-select: none;

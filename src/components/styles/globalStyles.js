@@ -5,6 +5,7 @@ import mq from './mq';
 export default createGlobalStyle`
   html {
     font-size: 62.5%; /* 1rem = 10px */
+    font-family: sans-serif;
   }
 
   body {
@@ -13,6 +14,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   //Typography
+
+  h1,h2,h3,h4,h5,h6{
+    margin:1.5rem;
+  }
     h1{
         font-size: 2.2rem;
         ${mq.sm}{
@@ -38,10 +43,10 @@ export default createGlobalStyle`
         font-size: 2.5rem;
     }
     ${mq.lg}{
-        font-size: 3rem;
+        font-size: 2.7rem;
     }
     ${mq.xl}{
-        font-size: 3rem;
+        font-size: 2.7rem;
     }  
  }
 
@@ -79,7 +84,7 @@ export default createGlobalStyle`
  }
 
   h5{
-        font-size: 1.7rem;
+    font-size: 1.7rem;
     ${mq.sm}{
         font-size: 1.8rem;
     }
