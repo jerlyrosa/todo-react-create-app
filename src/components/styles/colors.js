@@ -1,15 +1,15 @@
 export const colors = {
         primary:{
-            base:"#E5B299",
-            light: "#FCDEC0",
-            dark: "#B4846C",
+            base:"#1597E5",
+            light: "#69DADB",
+            dark: "#113CFC",
         }, 
         secondary:{
-            base:"#B05B3B",
-            light: "#D79771",
-            dark: "#753422",
+            base:"#00bcd4",
+            light: "#32DBC6",
+            dark: "#4D6DE3",
         },
         text_color: "#FFFFFF",
         cta_bg: "#79B4B7",
-        cta_hover:"#63B4B8"
+        cta_hover:"#076ca9"
 }
