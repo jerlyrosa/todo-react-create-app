@@ -2,13 +2,12 @@ import React,{useState} from "react";
 import styled from "styled-components";
 import Checkbox from "./checkbox";
 import { IconClose } from "./icons/icons";
-import mq from "./styles/mq";
 
 const TodoItem = (props) => {
 
   const [checked, setChecked]  = useState( false);
 
-  const handleClick = () => setChecked(!checked)
+  const handleClick = () => setChecked(!checked);
   
   return (
     <li>
@@ -16,11 +15,11 @@ const TodoItem = (props) => {
         <div onClick={handleClick}>
            <Checkbox checked={checked}  />
           </div>
-        <h5 style={{ marginLeft: 10 }}>{props.text}</h5>
-      </Container>
-      <ButtonClose>
+        <StylesList checked={checked}>{props.text}</StylesList>
+        <ButtonClose>
            <IconClose/>  
         </ButtonClose>
+      </Container>
     </li>
   );
 };
@@ -28,34 +27,28 @@ const TodoItem = (props) => {
 export default TodoItem;
 
 const Container = styled.div`
- display: flex;
-  align-items: center;
-  max-width: 95%;
-  
-
+ display: grid;
+ grid-template-columns: 1fr 10fr 1fr;
+ align-items: center;
 `;
 
 const ButtonClose= styled.button`
-    position: relative;
-    right: -85%;
-    /* bottom: -100%; */
     background: none;
     border: none;
     box-shadow: none;
-
-    ${mq.md}{
-    transform: translateY(-175%);
-
-
-    }
 
   &:hover{
     cursor: pointer;
       svg {
         transform: scale(1.4);
       }
-
   }
 
 `;
 
+const StylesList = styled.h6`
+  margin-left: 0;
+  font-weight: initial;
+  text-decoration: ${(props) => (props.checked ? "line-through;" : "none")};
+  font-style: ${(props) => (props.checked ? "italic" : "none")};
+`;

@@ -1,20 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import mq from "./styles/mq";
 
 const TodoSearch =()=>{
     return (
-        <Section>
+        <section>
           <Input  placeholder="Tasks"/>    
-        </Section>
+        </section>
     )
 }
 
 export default TodoSearch;
 
-
-const Section = styled.section`
-`;
 
 const Input = styled.input`
   display: flex;
@@ -29,14 +25,7 @@ const Input = styled.input`
   border-bottom: 1px solid  #00bcd4;
   border-bottom-width: thin;
   width: 25rem;
-
   &:focus { 
-    ${mq.md}{
-      width: 80%;
-    }
-  }
-
-
-
-  
+      width: 85%;
+  }  
 `;
