@@ -8,11 +8,6 @@ const TodoItem = (props) => {
 
   const {  text, compled,onCompled, onDelete } = props;
 
-
-  const CloseTasks =() =>{
-    alert("Close")
-}
-
   return (
     <li>
       <Container>
