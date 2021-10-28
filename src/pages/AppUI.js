@@ -10,6 +10,8 @@ import Header from "../components/header";
 
 const AppUI = (props) => {
   const {
+    loading,
+    error,
     searchValue,
     setSearch,
     totalTodos,
@@ -28,6 +30,10 @@ const AppUI = (props) => {
         <TodoSearch searchValue={searchValue} setSearch={setSearch} />
         <TodoCounter total={totalTodos} compled={compledTodos} />
         <TodoList>
+        {error && <p>Desespérate, hubo un error...</p>}
+        {loading && <h3>Estamos cargando, no desesperes...</h3>}
+        {(!loading && !searchedTodos.length) && <h3>¡Crea tu primer TODO!</h3>}
+
           {searchedTodos.length > 0 ? (
             searchedTodos.map((item) => {
               return (
@@ -42,9 +48,8 @@ const AppUI = (props) => {
             })
           ) : searchValue.length > 0 ? (
             <h3>{`There are no tasks with the name ${searchValue} 😐`}</h3>
-          ) : (
-            <h3>{`No Tasks 🙃`}</h3>
-          )}
+          ) :null
+          }
         </TodoList>
         <CreateTodoButton />
       </Container>

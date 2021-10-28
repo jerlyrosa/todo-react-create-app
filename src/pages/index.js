@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { AppUI } from "./AppUI";
 import  useLocalStorage  from '../hooks/useLocalStorage'
 
 
 
-const defaulTodo = [
-  { text: "New User Test Task", completed: false },
-];
-
-
 function App() {
   
-  const [ todos,saveTodos ] = useLocalStorage('TODO_V1',defaulTodo)
+  const { 
+    item:todos,
+    saveItem:saveTodos,
+    loading, 
+    error
+    } = useLocalStorage('TODO_V1',[]);
 
   console.log(todos);
   const [searchValue, setSearch] = useState("");
@@ -54,6 +54,8 @@ function App() {
 
   return (
     <AppUI
+      loading={loading}
+      error={error}
       totalTodos={totalTodos}
       compledTodos={compledTodos}
       searchValue={searchValue}

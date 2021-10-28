@@ -7,7 +7,7 @@ const TodoCounter =({total, compled})=>{
     return (
       <section>
         <Container  color={colors.text_color} bgColor={colors.primary.base}>
-          <h6>{`Has Completed  ${compled} of ${total} Tasks`}</h6>
+          <h6>{`You Have Completed  ${compled} of ${total} Tasks`}</h6>
         </Container>
       </section>
     );
