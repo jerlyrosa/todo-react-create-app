@@ -1,13 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import styled from "styled-components";
 import { colors } from "./styles/colors";
 import mq from "./styles/mq";
+import { TodoContext } from "../TodoContext";
 
-const TodoCounter =({total, compled})=>{
+const TodoCounter =()=>{
+
+  const {totalTodos, compledTodos} = useContext(TodoContext)
     return (
       <section>
         <Container  color={colors.text_color} bgColor={colors.primary.base}>
-          <h6>{`You Have Completed  ${compled} of ${total} Tasks`}</h6>
+          <h6>{`You Have Completed  ${compledTodos} of ${totalTodos} Tasks`}</h6>
         </Container>
       </section>
     );
