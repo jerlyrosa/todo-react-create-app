@@ -4,13 +4,18 @@ import { colors } from "./styles/colors";
 
 const CreateTodoButton =(props)=>{
 
+    const onClickAddButton =() =>{
+        alert("Escribe la tarea")
+    }
+
     return (
         <Button 
-        bgColor={colors.primary.base} 
-        textColor={colors.text_cta} 
-        shadowColor={"rgba(115, 185, 255, 0.5)"}
-        bgHover={colors.cta_hover}>
-              Agregar Nueva
+            onClick={onClickAddButton}
+            bgColor={colors.primary.base} 
+            textColor={colors.text_cta} 
+            shadowColor={"rgba(115, 185, 255, 0.5)"}
+            bgHover={colors.cta_hover}>
+              Add New
         </Button>
     )
 }

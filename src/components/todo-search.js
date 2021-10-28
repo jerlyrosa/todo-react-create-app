@@ -1,10 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-const TodoSearch =()=>{
+
+const TodoSearch =({searchValue, setSearch})=>{
+
+  const onChangeValue =(event)=>{
+      setSearch(event.target.value);
+  }
     return (
         <section>
-          <Input  placeholder="Tasks"/>    
+          <Input
+            onChange={onChangeValue}
+            value={searchValue}
+            placeholder="Search Tasks"/>  
         </section>
     )
 }

@@ -6,7 +6,7 @@ import { colors } from './styles/colors';
 
 const Checkbox = ({ className, checked,}) => (
   <CheckboxContainer className={className}>
-    <StyledCheckbox checked={checked} color={checked ? colors.secondary.dark: colors.secondary.base}>
+    <StyledCheckbox checked={checked} color={checked ? colors.secondary.light: colors.secondary.base}>
       <Icon viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />
       </Icon>

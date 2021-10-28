@@ -6,7 +6,7 @@ export const colors = {
         }, 
         secondary:{
             base:"#2196f3",
-            light: "#32DBC6",
+            light: "#7cc640",
             dark: "#3f80a7",
         },
         text_color: "#FFFFFF",

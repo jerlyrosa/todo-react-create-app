@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import styled from "styled-components";
 import Checkbox from "./checkbox";
 import { IconClose } from "./icons/icons";
@@ -6,19 +6,22 @@ import mq from "./styles/mq";
 
 const TodoItem = (props) => {
 
-  const [checked, setChecked]  = useState( false);
+  const {  text, compled,onCompled, onDelete } = props;
 
-  const handleClick = () => setChecked(!checked);
-  
+
+  const CloseTasks =() =>{
+    alert("Close")
+}
+
   return (
     <li>
       <Container>
-        <div onClick={handleClick}>
-           <Checkbox checked={checked}  />
+        <div onClick={onCompled}>
+           <Checkbox checked={compled}  />
           </div>
-        <StylesList checked={checked}>{props.text}</StylesList>
-        <ButtonClose>
-           <IconClose/>  
+        <StylesList checked={compled}>{text}</StylesList>
+        <ButtonClose onClick={onDelete}>
+           <IconClose />  
         </ButtonClose>
       </Container>
     </li>

@@ -51,6 +51,7 @@ export default createGlobalStyle`
  }
 
  h3{
+    color: gray;
     font-size: 1.9rem;
     ${mq.sm}{
         font-size: 2rem;
