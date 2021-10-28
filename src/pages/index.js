@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import { AppUI } from "./AppUI";
+import  useLocalStorage  from '../hooks/useLocalStorage'
+
+
 
 const defaulTodo = [
   { text: "New User Test Task", completed: false },
 ];
 
+
 function App() {
-  const localStorageTodos = localStorage.getItem("TODOS_V1");
-  let parsedTodos;
-
-  if (!localStorageTodos) {
-    localStorage.setItem("TODOS_V1", JSON.stringify(defaulTodo));
-    parsedTodos = defaulTodo;
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-
   
-  const [todos, setTodo] = useState(parsedTodos);
+  const [ todos,saveTodos ] = useLocalStorage('TODO_V1',defaulTodo)
+
+  console.log(todos);
   const [searchValue, setSearch] = useState("");
   
 
@@ -38,11 +34,6 @@ function App() {
 
   }
 
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-    setTodo(newTodos);
-  };
 
   const toggleCompleteTodos = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
