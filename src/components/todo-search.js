@@ -13,6 +13,7 @@ const TodoSearch =()=>{
         <section>
           <Input
             onChange={onChangeValue}
+            maxLength="30"
             value={searchValue}
             placeholder="Search Tasks"/>  
         </section>
@@ -31,7 +32,7 @@ const Input = styled.input`
   width: 80vw;
   max-width: 400px;
   font-size: 2rem;
-  transition: 0.9s ease;
+  transition: 0.9s;
   border-bottom: 1px solid  #00bcd4;
   border-bottom-width: thin;
   width: 25rem;
