@@ -9,7 +9,7 @@ import styled,{css} from "styled-components";
 import Header from "../components/header";
 import { colors } from "../components/styles/colors";
 import { TodoForm } from "../components/todoForm";
-import { useModal } from "../hooks/useModal";
+import Button from "../components/button";
 
 
 const AppUI = (props) => {
@@ -21,9 +21,10 @@ const AppUI = (props) => {
         toggleCompleteTodos,
         DeleteTodo,
         searchValue,
+        ModalView,
+        openModal
      } = useContext(TodoContext);
 
-     const {ModalView,openModal} = useModal();
 
   return (
     <Fragment>
@@ -35,17 +36,17 @@ const AppUI = (props) => {
               <TodoList>
                 {error && <p>There was mistake...</p>}
                 {loading && <h3>It's loading, please wait...</h3>}
-                {searchValue.length > 0 ? (
+                {!loading && !searchedTodos.length  && searchValue.length > 1 ? (
                   <h3>{`There are no tasks with the name "${searchValue}" 😐`}</h3>
                 ): 
                 !loading && !searchedTodos.length && (
                   <h3>Create your first TODO!</h3>
                 )}
 
-                  {searchedTodos.map((item) => {
+                  {searchedTodos.map((item, key) => {
                     return (
                       <TodoItem
-                        key={item.text}
+                        key={key}
                         text={item.text}
                         compled={item.completed}
                         onCompled={() => toggleCompleteTodos(item.text)}
@@ -58,25 +59,12 @@ const AppUI = (props) => {
                 
               </TodoList>
                     <ModalView>
-                     <div><h3>Soy un modal y funciono</h3>
-                       <h2>H2</h2>
-                     </div>
-                     
+                      <TodoForm/>
                    </ModalView>
                
-                
-              
-
-            <CreateTodoButton
-                onClick={openModal}
-                bgColor={colors.primary.base} 
-                textColor={colors.text_cta} 
-                shadowColor={"rgba(115, 185, 255, 0.5)"}
-                bgHover={colors.cta_hover}
-                // setOpenModal={setOpenModal}
-              >
-                Add New
-              </CreateTodoButton>
+                <Button>
+                  Add New
+                </Button>
       </Container>
     </Fragment>
   );
