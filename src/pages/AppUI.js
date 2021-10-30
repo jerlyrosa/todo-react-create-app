@@ -58,7 +58,10 @@ const AppUI = (props) => {
                 
               </TodoList>
                     <ModalView>
-                     <h2>Soy un modal y funciono</h2>
+                     <div><h3>Soy un modal y funciono</h3>
+                       <h2>H2</h2>
+                     </div>
+                     
                    </ModalView>
                
                 

@@ -25,9 +25,9 @@ const  ModalView = ({children}) =>{
     return createPortal(
         <Container modal={isModal} onClick={closeModal}>
             <Card onClick={(e) => e.stopPropagation()}>
-                  {children}
+              {children}
                   <CloseBottom onClick={closeModal}>
-                    Cerar
+                  <IconClose/>
               </CloseBottom>
             </Card>
         </Container>,
@@ -70,11 +70,20 @@ const Card = styled.div`
   border-radius: 5px;
   max-width: 40rem;
   padding: 1rem;
+  display: grid;
+ grid-template-columns: 11fr 1fr;
+ grid-template-rows: 1fr;
+
+
   word-wrap: break-word;
 `;
 
 const CloseBottom = styled.button`
-
+    position: relative;
+    top: -40%;
+    background: none;
+    border: none;
+    box-shadow: none;
 
 
 
