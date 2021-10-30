@@ -9,7 +9,6 @@ import styled,{css} from "styled-components";
 import Header from "../components/header";
 import { colors } from "../components/styles/colors";
 import { TodoForm } from "../components/todoForm";
-import Button from "../components/button";
 
 
 const AppUI = (props) => {
@@ -43,10 +42,10 @@ const AppUI = (props) => {
                   <h3>Create your first TODO!</h3>
                 )}
 
-                  {searchedTodos.map((item, key) => {
+                  {searchedTodos.map((item, index) => {
                     return (
                       <TodoItem
-                        key={key}
+                        key={index}
                         text={item.text}
                         compled={item.completed}
                         onCompled={() => toggleCompleteTodos(item.text)}
@@ -61,10 +60,14 @@ const AppUI = (props) => {
                     <ModalView>
                       <TodoForm/>
                    </ModalView>
-               
-                <Button>
-                  Add New
-                </Button>
+                <Button 
+                    onClick={openModal} 
+                    bgColor={colors.primary.base} 
+                    textColor={colors.text_cta} 
+                    shadowColor={"rgba(115, 185, 255, 0.5)"}
+                    bgHover={colors.cta_hover}
+                
+                > Add new</Button>
       </Container>
     </Fragment>
   );
@@ -81,7 +84,7 @@ const Container = styled.div`
 `;
 
 
-const CreateTodoButton = styled.button`
+const Button = styled.button`
 
 ${({bgColor, textColor, shadowColor, bgHover}) => css`
     display: flex;
@@ -109,3 +112,4 @@ ${({bgColor, textColor, shadowColor, bgHover}) => css`
     }
   `}
 `;
+
