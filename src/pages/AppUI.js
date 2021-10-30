@@ -9,6 +9,9 @@ import styled,{css} from "styled-components";
 import Header from "../components/header";
 import { colors } from "../components/styles/colors";
 import { TodoForm } from "../components/todoForm";
+import { TodosError } from "../components/loanding/todo-error";
+import { TodosLoading } from "../components/loanding/todo-loading";
+import { TodosEntry } from "../components/loanding/todo-entry";
 
 
 const AppUI = (props) => {
@@ -33,13 +36,13 @@ const AppUI = (props) => {
         <TodoSearch />
         <TodoCounter />
               <TodoList>
-                {error && <p>There was mistake...</p>}
-                {loading && <h3>It's loading, please wait...</h3>}
+                {error && <TodosError erro={error}/> }
+                {loading && <TodosLoading  item={searchedTodos}/>}
                 {!loading && !searchedTodos.length  && searchValue.length > 1 ? (
                   <h3>{`There are no tasks with the name "${searchValue}" 😐`}</h3>
                 ): 
                 !loading && !searchedTodos.length && (
-                  <h3>Create your first TODO!</h3>
+                   <TodosEntry/>
                 )}
 
                   {searchedTodos.map((item, index) => {

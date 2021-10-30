@@ -19,9 +19,6 @@ const closeModal = () => {
   };
 
 
-
-
-
 const  ModalView = ({children}) =>{
 
     return createPortal(
