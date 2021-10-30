@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Checkbox from "./checkbox";
-import { IconClose } from "./icons/icons";
+import {IconTrash } from "./icons/icons";
 import mq from "./styles/mq";
 
 const TodoItem = (props) => {
@@ -16,7 +16,7 @@ const TodoItem = (props) => {
           </div>
         <StylesList checked={compled}>{text}</StylesList>
         <ButtonClose onClick={onDelete}>
-           <IconClose />  
+           <IconTrash />  
         </ButtonClose>
       </Container>
     </li>
@@ -41,7 +41,7 @@ const ButtonClose= styled.button`
     cursor: pointer;
       svg {
         transform: scale(1.4);
-        fill: #575859;
+        /* fill: #575859; */
       }
   }
 
