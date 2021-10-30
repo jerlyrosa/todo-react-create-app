@@ -33,10 +33,10 @@ const Input = styled.input`
   max-width: 400px;
   font-size: 2rem;
   transition: 0.9s;
-  border-bottom: 1px solid  #00bcd4;
+  border-bottom: 1px solid #00bcd4;
   border-bottom-width: thin;
   width: 25rem;
-  &:focus { 
-      width: 85%;
-  }  
+  &:focus {
+    width: 85%;
+  }
 `;

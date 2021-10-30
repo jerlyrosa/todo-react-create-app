@@ -41,6 +41,7 @@ const ButtonClose= styled.button`
     cursor: pointer;
       svg {
         transform: scale(1.4);
+        fill: #575859;
       }
   }
 

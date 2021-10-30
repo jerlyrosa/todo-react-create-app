@@ -101,6 +101,7 @@ export default createGlobalStyle`
     }
 
     h6{
+        color: #6b7277;
         font-size: 1.6rem;
     ${mq.sm}{
         font-size: 1.7rem;

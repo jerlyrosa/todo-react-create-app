@@ -4,15 +4,18 @@ import { colors } from './styles/colors';
 
 
 
-const Checkbox = ({ className, checked,}) => (
+const Checkbox = ({ className, checked }) => (
   <CheckboxContainer className={className}>
-    <StyledCheckbox checked={checked} color={checked ? colors.secondary.light: colors.secondary.base}>
+    <StyledCheckbox
+      checked={checked}
+      color={checked ? colors.secondary.light : colors.secondary.base}
+    >
       <Icon viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />
       </Icon>
     </StyledCheckbox>
   </CheckboxContainer>
-)
+);
 
 export default Checkbox;
 
@@ -32,12 +35,11 @@ const StyledCheckbox = styled.div`
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: ${props => props.color};
+  background: ${(props) => props.color};
   border-radius: 3px;
   transition: all 150ms;
 
-
   ${Icon} {
-    visibility: ${props => (props.checked ? 'visible' : 'hidden')}
+    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
   }
 `;

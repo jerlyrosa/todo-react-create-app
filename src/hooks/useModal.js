@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {createPortal} from 'react-dom';
 import styled,{css} from 'styled-components';
 import { IconClose } from '../components/icons/icons';
+import mq from '../components/styles/mq';
+
 
 
 
@@ -49,48 +51,46 @@ export {useModal}
 
 const Container = styled.div`
   ${({ modal }) => css`
-
-background: rgba(0, 0, 0, 0.5);
-display: ${modal ? 'flex':'none'};
-position: fixed;
-top: 0;
-bottom: 0;
-width: 100%;
-align-items: baseline;
-justify-content: center;
-`}
-
-
-
+    background: rgba(0, 0, 0, 0.7);
+    display: ${modal ? "flex" : "none"};
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    align-items: baseline;
+    justify-content: center;
+  `}
 `;
 
 const Card = styled.div`
   background: #fff;
   margin: 20rem 1rem;
   border-radius: 5px;
-  max-width: 40rem;
+  max-width: 50rem;
   padding: 1rem;
   display: grid;
- grid-template-columns: 11fr 1fr;
- grid-template-rows: 1fr;
-
+  grid-template-columns: 11fr 1fr;
+  grid-template-rows: 1fr;
 
   word-wrap: break-word;
 `;
 
 const CloseBottom = styled.button`
-    position: relative;
-    top: -40%;
-    background: none;
-    border: none;
-    box-shadow: none;
+  position: relative;
+  max-height: 4rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+    left: 0.4rem;
+    top: -1rem ;
+    ${mq.md}{
+    left: -0.4rem;
+    }
 
-
-
-  &:hover{
+  &:hover {
     cursor: pointer;
-      svg {
-        transform: scale(1.4);
-      }
+    svg {
+      transform: scale(1.4);
+    }
   }
 `;
