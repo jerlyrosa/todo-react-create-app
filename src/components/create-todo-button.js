@@ -2,10 +2,10 @@ import React from "react";
 import styled,{css} from 'styled-components';
 import { colors } from "./styles/colors";
 
-const CreateTodoButton =(props)=>{
+const CreateTodoButton =({setOpenModal})=>{
 
     const onClickAddButton =() =>{
-        alert("Escribe la tarea")
+        setOpenModal(true)
     }
 
     return (

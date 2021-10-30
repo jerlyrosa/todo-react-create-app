@@ -16,8 +16,7 @@ const AppProvider = (props) =>{
         } = useLocalStorage('TODO_V1',[]);
     
       const [searchValue, setSearch] = useState("");
-      
-    
+ 
       const compledTodos = todos.filter((todo) => todo.completed).length;
     
       const totalTodos = todos.length;

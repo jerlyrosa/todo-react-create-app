@@ -13,7 +13,7 @@ const TodoSearch =()=>{
         <section>
           <Input
             onChange={onChangeValue}
-            maxLength="30"
+            maxLength="50"
             value={searchValue}
             placeholder="Search Tasks"/>  
         </section>
