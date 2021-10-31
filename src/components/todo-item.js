@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Checkbox from "./checkbox";
 import {IconTrash } from "./icons/icons";
 import mq from "./styles/mq";
+import { h6 } from "./styles/tipography";
 
 const TodoItem = (props) => {
 
@@ -14,8 +15,8 @@ const TodoItem = (props) => {
         <div onClick={onCompled}>
            <Checkbox checked={compled}  />
           </div>
-        <StylesList checked={compled}>{text}</StylesList>
-        <ButtonClose onClick={onDelete}>
+        <StylesList checked={compled} >{text}</StylesList>
+        <ButtonClose aria-label="trask" onClick={onDelete}>
            <IconTrash />  
         </ButtonClose>
       </Container>
@@ -30,6 +31,8 @@ const Container = styled.div`
  grid-template-columns: 1fr 10fr 1fr;
  align-items: center;
  padding: 0 2rem;
+ word-wrap: anywhere;
+
 `;
 
 const ButtonClose= styled.button`
@@ -46,7 +49,8 @@ const ButtonClose= styled.button`
 
 `;
 
-const StylesList = styled.h6`
+const StylesList = styled.h3`
+  ${h6}
   ${mq.md}{
     margin-left: 0;
   }

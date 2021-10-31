@@ -51,7 +51,6 @@ export default createGlobalStyle`
  }
 
  h3{
-    color: gray;
     font-size: 1.9rem;
     ${mq.sm}{
         font-size: 2rem;
@@ -101,7 +100,6 @@ export default createGlobalStyle`
     }
 
     h6{
-        color: #6b7277;
         font-size: 1.6rem;
     ${mq.sm}{
         font-size: 1.7rem;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { colors } from "./styles/colors";
 import mq from "./styles/mq";
 import { TodoContext } from "../TodoContext";
+import { h5 } from "./styles/tipography";
 
 const TodoCounter = () => {
 
@@ -10,7 +11,7 @@ const TodoCounter = () => {
   return (
     <section>
       <Container color={colors.text_color} bgColor={colors.primary.base}>
-        <h5>{`You Have Completed  ${compledTodos} of ${totalTodos} Tasks`}</h5>
+        <Title>{`You Have Completed  ${compledTodos} of ${totalTodos} Tasks`}</Title>
       </Container>
     </section>
   );
@@ -29,6 +30,10 @@ const Container = styled.div`
   ${mq.md} {
     width: 100%;
   }
+`;
+
+const Title = styled.h2`
+  ${h5}
 `;
 
 

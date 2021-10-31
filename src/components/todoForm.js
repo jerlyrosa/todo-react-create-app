@@ -71,7 +71,7 @@ const Label = styled.label`
 `;
 
 const TextTarea = styled.textarea`
-resize: none;
+resize:vertical;
 padding: 2rem 0 0 2rem;
 font-weight: 500;
 max-width: 25rem;

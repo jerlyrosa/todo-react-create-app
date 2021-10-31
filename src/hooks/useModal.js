@@ -61,7 +61,7 @@ const Container = styled.div`
 
 const Card = styled.div`
   background: #fff;
-  margin: 20rem 1rem;
+  margin: 5rem 1rem;
   border-radius: 5px;
   max-width: 50rem;
   padding: 1rem;
@@ -70,6 +70,10 @@ const Card = styled.div`
   grid-template-rows: 1fr;
 
   word-wrap: break-word;
+
+  ${mq.md}{
+  margin: 20rem 1rem;
+  }
 `;
 
 const CloseBottom = styled.button`
