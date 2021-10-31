@@ -37,15 +37,13 @@ export const IconTaks = () => (
 export const IconTrash = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="icon icon-tabler icon-tabler-trash"
-    width="24"
-    height="24"
+    // class="icon icon-tabler icon-tabler-trash"
+    width="30"
+    height="30"
     viewBox="0 0 24 24"
-    stroke-width="2"
+
     stroke="#575859"
     fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
     <line x1="4" y1="7" x2="20" y2="7"></line>
