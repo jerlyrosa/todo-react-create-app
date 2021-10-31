@@ -40,8 +40,7 @@ const ButtonClose= styled.button`
   &:hover{
     cursor: pointer;
       svg {
-        transform: scale(1.4);
-        /* fill: #575859; */
+        transform: scale(1.1);
       }
   }
 
