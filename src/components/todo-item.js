@@ -16,7 +16,7 @@ const TodoItem = (props) => {
         <div onClick={onCompled}>
            <Checkbox checked={compled}  />
           </div>
-        <StylesList color={colors.text.base}   checked={compled} >{text}</StylesList>
+        <StylesList color={colors.text.base}  checked={compled} >{text}</StylesList>
         <ButtonClose aria-label="trask" onClick={onDelete}>
            <IconTrash />  
         </ButtonClose>
@@ -53,6 +53,8 @@ const ButtonClose= styled.button`
 const StylesList = styled.h3`
 
   color:${props =>  props.color};
+  display:table;
+word-break:break-all;
   ${h6};
   ${mq.md}{
     margin-left: 0;

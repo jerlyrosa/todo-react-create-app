@@ -12,6 +12,7 @@ import { TodoForm } from "../components/todoForm";
 import { TodosError } from "../components/loanding/todo-error";
 import { TodosLoading } from "../components/loanding/todo-loading";
 import { TodosEntry } from "../components/loanding/todo-entry";
+import Footer from "../components/footer";
 
 
 const AppUI = (props) => {
@@ -72,6 +73,7 @@ const AppUI = (props) => {
                 
                 > Add new</Button>
       </Container>
+  
     </Fragment>
   );
 };
@@ -81,8 +83,7 @@ export { AppUI };
 const Container = styled.div`
   max-width: 60rem;
   word-wrap: break-word;
-  margin: 0 auto;
-  height: 80vh;
+  margin: 0 auto 5rem;
   ;
 `;
 
@@ -93,14 +94,11 @@ ${({bgColor, textColor, shadowColor, bgHover}) => css`
     display: flex;
     margin: 0 auto;
     text-align: center;
-    vertical-align: middle;
-    user-select: none;
     background-color: ${bgColor};
     font-weight: bold;
     padding: 1rem;
     border-radius: 0.8rem;
     color: white;
-    outline: initial;
     border: initial;
     cursor: pointer;
     text-decoration: none;

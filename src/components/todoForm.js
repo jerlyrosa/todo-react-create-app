@@ -96,15 +96,12 @@ const Button = styled.button`
   ${({ bgColor, textColor, shadowColor, bgHover }) => css`
     display: flex;
     margin: 1rem auto 0;
-    text-align: center;
-    vertical-align: middle;
     user-select: none;
     background-color: ${bgColor};
     font-weight: 500;
     padding: 1rem;
     border-radius: 0.8rem;
     color: white;
-    outline: initial;
     border: initial;
     cursor: pointer;
     text-decoration: none;
