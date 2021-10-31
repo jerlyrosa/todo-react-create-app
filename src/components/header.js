@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <section>
       <Container color={colors.text_color} bgColor={colors.primary.base}>
-        <h1>Todo List</h1>
+        <Title>Things to do</Title>
         <StylesIconTasks>
           <IconTaks />
         </StylesIconTasks>
@@ -26,6 +26,9 @@ const Container = styled.div`
   background-color: ${(props) => props.bgColor};
 `;
 
+const Title = styled.h1`
+
+`;
 const StylesIconTasks = styled.div`
   display: flex;
   align-items: center;

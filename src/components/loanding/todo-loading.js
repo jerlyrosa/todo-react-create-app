@@ -1,15 +1,21 @@
 import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components'
+import { colors } from '../styles/colors'
 
 export const TodosLoading = () => {
   return (
     <Loader>
-      <h3>It's loading, please wait...</h3>
+        <Title color={colors.text.base}>It's loading, please wait...</Title>
     </Loader>
   );
 };
 
 export default TodosLoading;
+
+const Title = styled.h3`
+color: ${props => props.color};
+`;
+
 
 const Loader = styled.div`
   margin: 1rem;

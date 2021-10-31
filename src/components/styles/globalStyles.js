@@ -5,17 +5,34 @@ const GlobalStyle =  createGlobalStyle`
   html {
     font-size: 62.5%; /* 1rem = 10px */
     font-family: sans-serif;
+    position: relative;
   }
 
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    //Styles para el footer al fondo
+    position: relative;
+    padding-bottom:12rem;
+    min-height: 100vh;
+  }
+
+  footer{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
   }
   //Typography
 
+
   h1,h2,h3,h4,h5,h6{
     margin:1.5rem;
+  }
+  span{
+    margin: 0 0.5rem;
   }
     h1{
         font-size: 2.2rem;
@@ -119,7 +136,10 @@ const GlobalStyle =  createGlobalStyle`
     list-style: none;
     margin: 0;
   }
-
+a{
+text-decoration: none;
+color: white;
+}
 `;
 
 

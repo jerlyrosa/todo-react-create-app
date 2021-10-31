@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components'
+import { colors } from '../styles/colors'
 
 export const TodosError= ({error}) => {
     return (
         <div>
-            <p>There was mistake...</p>
+            <Title color={colors.text.base}>There was mistake...</Title>
         </div>
     )
 }
 
-export default TodosError
+export default TodosError;
+
+
+const Title = styled.h3`
+color: ${props => props.color};
+`;

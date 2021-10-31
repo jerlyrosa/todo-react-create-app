@@ -12,7 +12,7 @@ import { TodoForm } from "../components/todoForm";
 import { TodosError } from "../components/loanding/todo-error";
 import { TodosLoading } from "../components/loanding/todo-loading";
 import { TodosEntry } from "../components/loanding/todo-entry";
-import Footer from "../components/footer";
+import FooterUI from "../components/footer";
 
 
 const AppUI = (props) => {
@@ -40,7 +40,7 @@ const AppUI = (props) => {
                 {error && <TodosError erro={error}/> }
                 {loading && <TodosLoading  item={searchedTodos}/>}
                 {!loading && !searchedTodos.length  && searchValue.length > 1 ? (
-                  <h3>{`There are no tasks with the name "${searchValue}" 😐`}</h3>
+                 <Title color={colors.text.base}>{`There are no tasks with the name "${searchValue}" 😐`}</Title>
                 ): 
                 !loading && !searchedTodos.length && (
                    <TodosEntry/>
@@ -73,17 +73,19 @@ const AppUI = (props) => {
                 
                 > Add new</Button>
       </Container>
-  
+  <FooterUI/>
     </Fragment>
   );
 };
 
 export { AppUI };
 
-const Container = styled.div`
+const Container = styled.section`
   max-width: 60rem;
   word-wrap: break-word;
-  margin: 0 auto 5rem;
+  margin: 0 auto 2rem;
+  /* min-height: calc(100vh - 25rem); */
+
   ;
 `;
 
@@ -114,3 +116,6 @@ ${({bgColor, textColor, shadowColor, bgHover}) => css`
   `}
 `;
 
+const Title = styled.h3`
+color: ${props => props.color};
+`;
