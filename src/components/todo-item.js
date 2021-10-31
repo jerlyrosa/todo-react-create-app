@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Checkbox from "./checkbox";
 import {IconTrash } from "./icons/icons";
+import { colors } from "./styles/colors";
 import mq from "./styles/mq";
 import { h6 } from "./styles/tipography";
 
@@ -15,7 +16,7 @@ const TodoItem = (props) => {
         <div onClick={onCompled}>
            <Checkbox checked={compled}  />
           </div>
-        <StylesList checked={compled} >{text}</StylesList>
+        <StylesList color={colors.text.base}   checked={compled} >{text}</StylesList>
         <ButtonClose aria-label="trask" onClick={onDelete}>
            <IconTrash />  
         </ButtonClose>
@@ -50,7 +51,9 @@ const ButtonClose= styled.button`
 `;
 
 const StylesList = styled.h3`
-  ${h6}
+
+  color:${props =>  props.color};
+  ${h6};
   ${mq.md}{
     margin-left: 0;
   }

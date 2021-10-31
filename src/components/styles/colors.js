@@ -1,6 +1,6 @@
 export const colors = {
         primary:{
-            base:"#1597E5",
+            base:"#3497f0",
             light: "#69DADB",
             dark: "#113CFC",
         }, 
@@ -11,5 +11,10 @@ export const colors = {
         },
         text_color: "#FFFFFF",
         cta_bg: "#79B4B7",
-        cta_hover:"#076ca9"
+        cta_hover:"#076ca9",
+        text:{
+            base: "#606060",
+            light: "#6E7B72",
+            dark:"#6b7277"
+          },
 }

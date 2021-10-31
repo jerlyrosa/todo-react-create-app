@@ -29,7 +29,7 @@ export const TodoForm = () => {
     return (
      <Form onSubmit={onSubmit}>
          <Label>
-             <h3 style={{margin:"1rem auto", fontWeight:500}}>Write a new TODO</h3>
+             <Title color={colors.text.base}>Write a new TODO</Title>
              </Label>
          <TextTarea
          placeholder="Write a new TODO" 
@@ -47,6 +47,7 @@ export const TodoForm = () => {
      </Form>
     )
 }
+
 
 
 
@@ -70,11 +71,18 @@ const Label = styled.label`
 
 `;
 
+const Title = styled.h3`
+  margin: 1rem auto;
+  color:${props =>  props.color};
+  font-weight: 500;
+`;
+
 const TextTarea = styled.textarea`
 resize:vertical;
 padding: 2rem 0 0 2rem;
 font-weight: 500;
 max-width: 25rem;
+max-height: 50vh;
 
 ${mq.md}{
     resize: auto;

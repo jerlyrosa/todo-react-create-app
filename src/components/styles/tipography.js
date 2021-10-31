@@ -1,4 +1,4 @@
-import styled from "styled-components";
+
 import mq from "./mq";
 
 export const h1 = `

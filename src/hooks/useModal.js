@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import styled,{css} from 'styled-components';
 import { IconClose } from '../components/icons/icons';
 import mq from '../components/styles/mq';
-
+import { Global } from '@emotion/react';
 
 
 
@@ -23,6 +23,8 @@ const  ModalView = ({children}) =>{
 
     return createPortal(
         <Container modal={isModal} onClick={closeModal}>
+        {isModal && <Global styles={{ body: { overflowY: "hidden" } }} />}
+
             <Card onClick={(e) => e.stopPropagation()}>
               {children}
                   <CloseBottom onClick={closeModal}>
@@ -47,7 +49,10 @@ return{
 export {useModal}
 
 const Container = styled.div`
+overflow-y: hidden;
+
   ${({ modal }) => css`
+
     background: rgba(0, 0, 0, 0.7);
     display: ${modal ? "flex" : "none"};
     position: fixed;

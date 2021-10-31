@@ -1,8 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import mq from './mq';
 
-
-export default createGlobalStyle`
+const GlobalStyle =  createGlobalStyle`
   html {
     font-size: 62.5%; /* 1rem = 10px */
     font-family: sans-serif;
@@ -122,3 +121,6 @@ export default createGlobalStyle`
   }
 
 `;
+
+
+export default GlobalStyle;
