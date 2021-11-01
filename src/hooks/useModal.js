@@ -1,58 +1,55 @@
-import React, { useState } from 'react';
-import {createPortal} from 'react-dom';
-import styled,{css} from 'styled-components';
-import { IconClose } from '../components/icons/icons';
-import mq from '../components/styles/mq';
-import { Global } from '@emotion/react';
-
-
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
+import styled, { css } from "styled-components";
+import { IconClose } from "../components/icons/icons";
+import mq from "../components/styles/mq";
+import { Global } from "@emotion/react";
 
 const useModal = () => {
+  const [isModal, setCloseModal] = useState(false);
 
-const [isModal, setCloseModal] = useState(false);
-
-const closeModal = () => {
+  const closeModal = () => {
     setCloseModal(false);
   };
   const openModal = () => {
-    setCloseModal(true);
+    setCloseModal(!isModal);
   };
 
+  const editModal = () => {
+    setCloseModal(!isModal);
+  };
 
-const  ModalView = ({children}) =>{
-
+  const ModalView = ({ title, children }) => {
     return createPortal(
-        <Container modal={isModal} onClick={closeModal}>
+      <Container modal={isModal}>
+        
         {isModal && <Global styles={{ body: { overflowY: "hidden" } }} />}
 
-            <Card onClick={(e) => e.stopPropagation()}>
-              {children}
-                  <CloseBottom onClick={closeModal}>
-                  <IconClose/>
-              </CloseBottom>
-            </Card>
-        </Container>,
-        document.getElementById('modal')
-    )
-
-
-}
-return{
+        <Card>
+          <CloseBottom onClick={closeModal}>
+            <IconClose />
+          </CloseBottom>
+          {children}
+          {title && <Span>{`create: ${title}`}</Span>}
+        </Card>
+      </Container>,
+      document.getElementById("modal")
+    );
+  };
+  return {
     ModalView,
     openModal,
-    closeModal
-}
+    closeModal,
+    editModal,
+  };
+};
 
-}
-
-
-export {useModal}
+export { useModal };
 
 const Container = styled.div`
-overflow-y: hidden;
+  overflow-y: hidden;
 
   ${({ modal }) => css`
-
     background: rgba(0, 0, 0, 0.7);
     display: ${modal ? "flex" : "none"};
     position: fixed;
@@ -68,16 +65,15 @@ const Card = styled.div`
   background: #fff;
   margin: 5rem 1rem;
   border-radius: 5px;
-  max-width: 50rem;
+  max-width: 65rem;
   padding: 1rem;
-  display: grid;
-  grid-template-columns: 11fr 1fr;
-  grid-template-rows: 1fr;
-
+  display: flex;
+  flex-direction: column;
+  min-width: 85vw;
   word-wrap: break-word;
-
-  ${mq.md}{
-  margin: 20rem 1rem;
+  ${mq.md} {
+    min-width: auto;
+    margin: 20rem 1rem;
   }
 `;
 
@@ -87,11 +83,8 @@ const CloseBottom = styled.button`
   background: none;
   border: none;
   box-shadow: none;
-    left: 0.4rem;
-    top: -1rem ;
-    ${mq.md}{
-    left: -0.4rem;
-    }
+  display: flex;
+  justify-content: end;
 
   &:hover {
     cursor: pointer;
@@ -99,4 +92,8 @@ const CloseBottom = styled.button`
       transform: scale(1.4);
     }
   }
+`;
+
+const Span = styled.span`
+  margin-top: 1rem;
 `;
