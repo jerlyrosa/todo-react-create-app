@@ -15,6 +15,6 @@ export const colors = {
         text:{
             base: "#606060",
             light: "#6E7B72",
-            dark:"#6b7277"
+            dark:"#6b7277",
           },
 }

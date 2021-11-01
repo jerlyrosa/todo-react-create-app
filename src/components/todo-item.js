@@ -1,14 +1,21 @@
 import React from "react";
-import styled from "styled-components";
+import styled,{css} from "styled-components";
+import { useModal } from "../hooks/useModal";
 import Checkbox from "./checkbox";
-import {IconTrash } from "./icons/icons";
+import {IconEdit, Iconmaximize, IconTrash } from "./icons/icons";
 import { colors } from "./styles/colors";
 import mq from "./styles/mq";
 import { h6 } from "./styles/tipography";
+import TodoViewUI from "./todo-view";
+
 
 const TodoItem = (props) => {
 
-  const {  text, compled,onCompled, onDelete } = props;
+  const { title, content, compled,onCompled, onDelete,creation_date } = props;
+
+const {ModalView, openModal} = useModal();
+
+const onEdit =() => alert("It is working")
 
   return (
     <li>
@@ -16,12 +23,23 @@ const TodoItem = (props) => {
         <div onClick={onCompled}>
            <Checkbox checked={compled}  />
           </div>
-        <StylesList color={colors.text.base}  checked={compled} >{text}</StylesList>
-        <ButtonClose aria-label="trask" onClick={onDelete}>
+        <StylesList color={colors.text.base}  checked={compled} >{title}</StylesList>
+        <ModalView title={creation_date}>
+             <TodoViewUI {...{title, content}}/>
+           </ModalView>
+        <ButtonIcon aria-label="traskDelete" onClick={openModal} >
+           <Iconmaximize />  
+        </ButtonIcon>
+        <ButtonIcon onClick={onEdit}>
+          <IconEdit/>
+        </ButtonIcon>
+        <ButtonIcon aria-label="traskDelete" hover="#be0909"onClick={onDelete}>
            <IconTrash />  
-        </ButtonClose>
+        </ButtonIcon>
+
       </Container>
     </li>
+
   );
 };
 
@@ -29,15 +47,17 @@ export default TodoItem;
 
 const Container = styled.div`
  display: grid;
- grid-template-columns: 1fr 10fr 1fr;
+ grid-template-columns: 1fr 10fr 1fr 1fr 1fr;
  align-items: center;
  padding: 0 2rem;
  word-wrap: anywhere;
 
 `;
 
-const ButtonClose= styled.button`
-    background: none;
+const ButtonIcon= styled.button`
+  ${({ hover}) => css`
+  
+  background: none;
     border: none;
     box-shadow: none;
 
@@ -45,8 +65,12 @@ const ButtonClose= styled.button`
     cursor: pointer;
       svg {
         transform: scale(1.1);
+        stroke: ${hover && hover};
       }
   }
+  
+  `}
+
 
 `;
 

@@ -8,33 +8,39 @@ import mq from "./styles/mq";
 
 export const TodoForm = () => {
 
-    const  [newTodoValue, setNewTodoValue,] = useState('');
+  const  [newValueTitle, setNewValueTitle] = useState('');
+    const  [newValueContent, setNewValueContent] = useState();
+
 
     const {
         addTodo,
         closeModal
     } = useContext(TodoContext);
 
-    const onChange = (event) => setNewTodoValue(event.target.value);
 
-
-    const onSubmit = (event) =>{
-        event.preventDefault();
-        if(newTodoValue.length > 0){
-            addTodo(newTodoValue);
-            closeModal(false);
-        }
-        
-    }
+    const onSubmit = (event) => {
+      event.preventDefault();
+      if (newValueTitle.length > 0 ) {
+        addTodo({ title: newValueTitle, content: newValueContent });
+        closeModal(false);
+      }
+    };
     return (
      <Form onSubmit={onSubmit}>
          <Label>
              <Title color={colors.text.base}>Write a new TODO</Title>
              </Label>
+
+             <TextInput
+                placeholder="Write a Title" 
+                value={newValueTitle}
+                onChange={(e)=>setNewValueTitle(e.target.value)}
+                
+             />
          <TextTarea
-         placeholder="Write a new TODO" 
-         value={newTodoValue} 
-         onChange={onChange} />
+         placeholder="Write a Description" 
+         value={newValueContent} 
+         onChange={(e)=>setNewValueContent(e.target.value)} />
          <div>
              <Button 
                 type="sumit"
@@ -60,6 +66,7 @@ const Form = styled.form`
   display: flex;
   align-content: center;
   flex-direction: column;
+  padding: 1rem;
 
 `;
 
@@ -77,19 +84,40 @@ const Title = styled.h3`
   font-weight: 500;
 `;
 
+const TextInput = styled.input`
+  font-weight: 500;
+  margin: 1rem 0;
+  padding: 1rem 0 1rem 2rem ;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: #eeeeee;
+  border-width: thin;
+
+`;
+
+// border-bottom-width: thin;
+// border-bottom-color
+
+
 const TextTarea = styled.textarea`
-resize:vertical;
-padding: 2rem 0 0 2rem;
-font-weight: 500;
-max-width: 25rem;
-max-height: 50vh;
+  resize: vertical;
+  padding: 2rem 0 0 2rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-weight: 500;
+  border-bottom-color:#eeeeee;
 
-${mq.md}{
+
+  max-height: 50vh;
+
+  ${mq.md} {
     resize: auto;
-  max-width: 45rem;
-  min-width: 45rem;
-}
-
+    max-width: 45rem;
+    min-width: 45rem;
+    /* border: revert; */
+  }
 `;
 
 const Button = styled.button`

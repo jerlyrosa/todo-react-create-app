@@ -1,4 +1,5 @@
 import React,{createContext, useState} from "react";
+import { v4 as uuidv } from "uuid";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useModal } from "../hooks/useModal";
 
@@ -13,6 +14,8 @@ const AppProvider = (props) =>{
         loading, 
         error
         } = useLocalStorage('TODO_V1',[]);
+
+
     
       const [searchValue, setSearch] = useState("");
  
@@ -36,23 +39,34 @@ const AppProvider = (props) =>{
     
       }
 
-      const toggleCompleteTodos = (text) => {
-        const todoIndex = todos.findIndex((todo) => todo.text === text);
+      const toggleCompleteTodos = (id) => {
+        console.log(id);
+        const todoIndex = todos.findIndex((todo) => todo.id === id);
         const newTodos = [...todos];
         newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
     
         saveTodos(newTodos);
       };
 
-      const addTodo = (text) => {
+        //add todo
+
+      const addTodo = ({...props}) => {
+          const {
+            title,
+            content
+          } = props;
+
         const newTodos = [...todos];
         newTodos.push({
+          id:uuidv(),
           compled:false,
-          text,
+          creation_date:new Date().toLocaleString(),
+          title,
+          content,
         })    
         saveTodos(newTodos);
       };
-    
+
     
       const DeleteTodo = (text) => {
         const todoIndex = todos.findIndex((todo) => todo.text === text);

@@ -39,7 +39,7 @@ const AppUI = (props) => {
               <TodoList>
                 {error && <TodosError erro={error}/> }
                 {loading && <TodosLoading  item={searchedTodos}/>}
-                {!loading && !searchedTodos.length  && searchValue.length > 1 ? (
+                {!loading && !searchedTodos.length  && searchValue.length ? (
                  <Title color={colors.text.base}>{`There are no tasks with the name "${searchValue}" 😐`}</Title>
                 ): 
                 !loading && !searchedTodos.length && (
@@ -47,13 +47,24 @@ const AppUI = (props) => {
                 )}
 
                   {searchedTodos.map((item, index) => {
+                    const {
+                      id,
+                      title,
+                      content,
+                      completed,
+                      creation_date
+                    } = item;
+
                     return (
                       <TodoItem
                         key={index}
-                        text={item.text}
-                        compled={item.completed}
-                        onCompled={() => toggleCompleteTodos(item.text)}
-                        onDelete={() => DeleteTodo(item.text)}
+                        id={id}
+                        creation_date={creation_date}
+                        title={title}
+                        content={content}
+                        compled={completed}
+                        onCompled={() => toggleCompleteTodos(item.id)}
+                        onDelete={() => DeleteTodo(item.id)}
                       />
                        )
                   })

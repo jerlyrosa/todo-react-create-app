@@ -22,7 +22,7 @@ const useModal = () => {
   const ModalView = ({ title, children }) => {
     return createPortal(
       <Container modal={isModal}>
-        
+
         {isModal && <Global styles={{ body: { overflowY: "hidden" } }} />}
 
         <Card>
@@ -72,19 +72,18 @@ const Card = styled.div`
   min-width: 85vw;
   word-wrap: break-word;
   ${mq.md} {
-    min-width: auto;
+    min-width: 40rem;
     margin: 20rem 1rem;
   }
 `;
 
 const CloseBottom = styled.button`
-  position: relative;
   max-height: 4rem;
   background: none;
   border: none;
   box-shadow: none;
   display: flex;
-  justify-content: end;
+  justify-content: end !important;
 
   &:hover {
     cursor: pointer;
