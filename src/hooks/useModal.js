@@ -30,7 +30,7 @@ const useModal = () => {
             <IconClose />
           </CloseBottom>
           {children}
-          {title && <Span>{`create: ${title}`}</Span>}
+          {title && <Span>{`Create: ${title}`}</Span>}
         </Card>
       </Container>,
       document.getElementById("modal")

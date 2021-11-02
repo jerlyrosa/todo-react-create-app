@@ -31,7 +31,7 @@ const AppProvider = (props) =>{
         searchedTodos = todos;
       }  else {
         searchedTodos = todos.filter((todo) => {
-          const todoText = todo.text.toLowerCase();
+          const todoText = todo.title.toLowerCase();
           const searchText = searchValue.toLowerCase();
 
           return todoText.includes(searchText) 
