@@ -4,7 +4,7 @@ import mq from './mq';
 const GlobalStyle =  createGlobalStyle`
   html {
     font-size: 62.5%; /* 1rem = 10px */
-    font-family: sans-serif;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     position: relative;
   }
 

@@ -1,21 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled,{css} from "styled-components";
-import { TodoContext } from "../TodoContext";
 import { colors } from "./styles/colors";
 import mq from "./styles/mq";
 
 
 
-export const TodoForm = () => {
+export const TodoForm = ({ addTodo, closeModal}) => {
 
   const  [newValueTitle, setNewValueTitle] = useState('');
     const  [newValueContent, setNewValueContent] = useState();
 
-
-    const {
-        addTodo,
-        closeModal
-    } = useContext(TodoContext);
 
 
     const onSubmit = (event) => {

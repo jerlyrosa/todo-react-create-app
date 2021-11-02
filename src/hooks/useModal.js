@@ -66,14 +66,14 @@ const Card = styled.div`
   margin: 5rem 1rem;
   border-radius: 5px;
   max-width: 65rem;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   min-width: 85vw;
   word-wrap: break-word;
   ${mq.md} {
     min-width: 40rem;
-    margin: 20rem 1rem;
+    margin: 10rem 1rem;
   }
 `;
 

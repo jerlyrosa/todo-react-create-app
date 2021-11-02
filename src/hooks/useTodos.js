@@ -1,12 +1,10 @@
-import React,{createContext, useState} from "react";
+import { useState} from "react";
 import { v4 as uuidv } from "uuid";
-import useLocalStorage from "../hooks/useLocalStorage";
-import { useModal } from "../hooks/useModal";
+import useLocalStorage from "./useLocalStorage";
+import { useModal } from "./useModal";
 
 
-const TodoContext = createContext();
-
-const AppProvider = (props) =>{
+const useTodos = () =>{
 
     const { 
         item:todos,
@@ -40,7 +38,6 @@ const AppProvider = (props) =>{
       }
 
       const toggleCompleteTodos = (id) => {
-        console.log(id);
         const todoIndex = todos.findIndex((todo) => todo.id === id);
         const newTodos = [...todos];
         newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
@@ -59,7 +56,7 @@ const AppProvider = (props) =>{
         const newTodos = [...todos];
         newTodos.push({
           id:uuidv(),
-          compled:false,
+          completed:false,
           creation_date:new Date().toLocaleString(),
           title,
           content,
@@ -76,8 +73,7 @@ const AppProvider = (props) =>{
         saveTodos(newTodos);
       };
     
-        return(
-            <TodoContext.Provider value={{
+        return{
                 loading,
                 error,
                 totalTodos,
@@ -91,12 +87,10 @@ const AppProvider = (props) =>{
                 ModalView,
                 openModal,
                 closeModal
-            }}>
-                {props.children}
-            </TodoContext.Provider>
-        );
+            };
+      
 
 }
 
 
-export { TodoContext, AppProvider };
+export {  useTodos };

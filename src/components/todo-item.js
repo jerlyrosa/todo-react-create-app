@@ -11,7 +11,9 @@ import TodoViewUI from "./todo-view";
 
 const TodoItem = (props) => {
 
-  const { title, content, compled,onCompled, onDelete,creation_date } = props;
+
+const { title, content, completed,creation_date, onCompled, onDelete } = props;
+
 
 const {ModalView, openModal} = useModal();
 
@@ -21,16 +23,16 @@ const onEdit =() => alert("It is working")
     <li>
       <Container>
         <div onClick={onCompled}>
-           <Checkbox checked={compled}  />
+           <Checkbox checked={completed}  />
           </div>
-        <StylesList color={colors.text.base}  checked={compled} >{title}</StylesList>
+        <StylesList color={colors.text.base}  checked={completed} >{title}</StylesList>
         <ModalView title={creation_date}>
              <TodoViewUI {...{title, content}}/>
            </ModalView>
-        <ButtonIcon aria-label="traskDelete" onClick={openModal} >
+        <ButtonIcon aria-label="tasksMaximize" onClick={openModal} >
            <Iconmaximize />  
         </ButtonIcon>
-        <ButtonIcon onClick={onEdit}>
+        <ButtonIcon  aria-label="tasksEdit"  onClick={onEdit}>
           <IconEdit/>
         </ButtonIcon>
         <ButtonIcon aria-label="traskDelete" hover="#be0909"onClick={onDelete}>

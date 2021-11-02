@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const TodoList =(props)=>{
+const TodoList =({children})=>{
+
     return (
         <section> 
             <Container>
             <ul style={{ padding: 0 }}> 
-                {props.children}
+                {children}
             </ul>
             </Container>
         </section>
@@ -16,5 +17,7 @@ const TodoList =(props)=>{
 export default TodoList;
 
 const Container = styled.div`
-    margin: 5rem auto;
+    max-width: 60rem;
+    word-wrap: break-word;
+    margin: 4rem auto 2rem;
 `;

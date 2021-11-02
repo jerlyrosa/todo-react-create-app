@@ -1,13 +1,11 @@
-import React,{useContext} from "react";
+import React from "react";
 import styled from "styled-components";
 import { colors } from "./styles/colors";
 import mq from "./styles/mq";
-import { TodoContext } from "../TodoContext";
 import { h5 } from "./styles/tipography";
 
-const TodoCounter = () => {
+const TodoCounter = ({totalTodos,compledTodos}) => {
 
-  const { totalTodos, compledTodos } = useContext(TodoContext);
   return (
     <section>
       <Container color={colors.text_color} bgColor={colors.primary.base}>
@@ -27,8 +25,8 @@ const Container = styled.div`
   background-color: ${(props) => props.bgColor};
   width: 90%;
   margin: 0 auto;
-  ${mq.md} {
-    width: 100%;
+  ${mq.lg} {
+    width: 46%;
   }
 `;
 
