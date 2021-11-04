@@ -16,6 +16,7 @@ import { TodosLoading } from "../components/loanding/todo-loading";
 import { TodosEntry } from "../components/loanding/todo-entry";
 import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
+import TodosResult from "../components/loanding/todo-result";
 
 
 
@@ -33,7 +34,7 @@ function App() {
     ModalView,
     openModal,
     addTodo, 
-    closeModal
+    closeModal,
   } = useTodos();
 
   return (
@@ -44,6 +45,7 @@ function App() {
           <TodoSearch  
           searchValue={searchValue} 
           setSearch={setSearch} 
+          loading={loading}
           />
           <TodoCounter 
           totalTodos={totalTodos}
@@ -55,14 +57,11 @@ function App() {
       <TodoList>
         {error && <TodosError erro={error} />}
         {loading && <TodosLoading item={searchedTodos} />}
-        {!loading && !searchedTodos.length && searchValue.length ? (
-          <Title
-            color={colors.text.base}
-          >{`There are no tasks with the name "${searchValue}" 😐`}</Title>
+        {!loading && !searchedTodos.length && totalTodos ? (
+          <TodosResult searchValue={searchValue}/>
         ) : (
           !loading && !searchedTodos.length && <TodosEntry />
         )}
-
         {searchedTodos.map((item, index) => {
           return (
             <TodoItem
@@ -124,8 +123,4 @@ const Button = styled.button`
       background-color: ${bgHover};
     }
   `}
-`;
-
-const Title = styled.h3`
-  color: ${(props) => props.color};
 `;

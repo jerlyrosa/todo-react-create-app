@@ -4,7 +4,7 @@ import styled from "styled-components";
 const TodoList =({children})=>{
 
     return (
-        <section> 
+        <section>    
             <Container>
             <ul style={{ padding: 0 }}> 
                 {children}

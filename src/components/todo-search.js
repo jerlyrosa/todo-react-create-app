@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 
-const TodoSearch =({ searchValue, setSearch})=>{
+const TodoSearch =({ searchValue, setSearch,loading})=>{
 
   // const { searchValue, setSearch} = useContext(TodoContext)
   const onChangeValue =(event)=>{
@@ -14,7 +14,10 @@ const TodoSearch =({ searchValue, setSearch})=>{
             onChange={onChangeValue}
             maxLength="50"
             value={searchValue}
-            placeholder="Search Tasks"/>  
+            placeholder="Search Tasks"
+            disabled={loading}
+            
+            />  
         </section>
     )
 }
@@ -37,5 +40,9 @@ const Input = styled.input`
   width: 25rem;
   &:focus {
     width: 85%;
+  }
+
+  &:disabled{
+    opacity: 25%;
   }
 `;
