@@ -37,44 +37,45 @@ function App() {
     closeModal,
   } = useTodos();
 
+
   return (
     <Fragment>
-        <TodoHeaderUI>
-          <GlobalStyle />
-          <Header />
-          <TodoSearch  
-          searchValue={searchValue} 
-          setSearch={setSearch} 
-          loading={loading}
-          />
-          <TodoCounter 
-          totalTodos={totalTodos}
-          compledTodos={compledTodos}
-          />
-      </TodoHeaderUI>
+      <TodoHeaderUI>
+        <GlobalStyle />
+        <Header />
 
+        <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} />
+
+        <TodoSearch
+          searchValue={searchValue}
+          setSearch={setSearch}
+          loading={loading}
+        />
+      </TodoHeaderUI>
 
       <TodoList>
         {error && <TodosError erro={error} />}
         {loading && <TodosLoading item={searchedTodos} />}
         {!loading && !searchedTodos.length && totalTodos ? (
-          <TodosResult searchValue={searchValue}/>
+          <TodosResult searchValue={searchValue} />
         ) : (
           !loading && !searchedTodos.length && <TodosEntry />
         )}
-        {searchedTodos.map((item, index) => {
-          return (
-            <TodoItem
-              key={index}
-              {...item}
-              onCompled={() => toggleCompleteTodos(item.id)}
-              onDelete={() => DeleteTodo(item.id)}
-            />
-          );
-        })}
+        {!loading &&
+          !error &&
+          searchedTodos.map((item, index) => {
+            return (
+              <TodoItem
+                key={index}
+                {...item}
+                onCompled={() => toggleCompleteTodos(item.id)}
+                onDelete={() => DeleteTodo(item.id)}
+              />
+            );
+          })}
 
         <ModalView>
-          <TodoForm  addTodo={addTodo} closeModal={closeModal}/>
+          <TodoForm addTodo={addTodo} closeModal={closeModal} />
         </ModalView>
         <Container as="li">
           <Button
@@ -89,8 +90,7 @@ function App() {
         </Container>
       </TodoList>
 
-  
-        <FooterUI />
+      <FooterUI />
     </Fragment>
   );
 };

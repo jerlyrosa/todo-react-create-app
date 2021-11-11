@@ -24,7 +24,8 @@ const Container = styled.div`
   color: ${(props) => props.color};
   background-color: ${(props) => props.bgColor};
   width: 90%;
-  margin: 0 auto;
+  margin: 5rem auto 0;
+  border-radius: 1rem;
   ${mq.lg} {
     width: 46%;
   }
