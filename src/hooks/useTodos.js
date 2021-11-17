@@ -10,11 +10,12 @@ const useTodos = () =>{
         item:todos,
         saveItem:saveTodos,
         loading, 
-        error
+        error,
+        setItem,
+        onChangeOrder
         } = useLocalStorage('TODO_V1',[]);
 
 
-    
       const [searchValue, setSearch] = useState("");
  
       const {ModalView,openModal,closeModal} = useModal();
@@ -65,11 +66,10 @@ const useTodos = () =>{
       };
 
     
-      const DeleteTodo = (text) => {
-        const todoIndex = todos.findIndex((todo) => todo.text === text);
-        const newTodos = [...todos];
-        newTodos.splice(todoIndex, 1);
-    
+      const DeleteTodo = (id) => {
+
+        const newTodos =todos.filter((todo) => todo.id !== id);
+
         saveTodos(newTodos);
       };
     
@@ -86,7 +86,10 @@ const useTodos = () =>{
                 addTodo,
                 ModalView,
                 openModal,
-                closeModal
+                closeModal,
+                setItem,
+                onChangeOrder
+
             };
       
 

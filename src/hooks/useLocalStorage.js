@@ -6,17 +6,20 @@ const useLocalStorage = (itemName, inicialValue) => {
   const [error, setError] = useState(false);
   const [item, setItem] = useState(inicialValue);
 
-  
 
   useEffect(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName);
+
         let parsedItem;
-      
+
+        console.log(localStorageItem)
         if (!localStorageItem) {
           localStorage.setItem(itemName, JSON.stringify(inicialValue));
           parsedItem = inicialValue;
         } else {
+
+
           parsedItem = JSON.parse(localStorageItem);
         }
   
@@ -32,7 +35,20 @@ const useLocalStorage = (itemName, inicialValue) => {
 
 
 
+  const onChangeOrder = (newOrder) => {
+    try {
+      const stringifiedTodos = JSON.stringify(newOrder);
+      localStorage.setItem(itemName, stringifiedTodos);
+  
+      setItem(newOrder);
+    } catch (error) {
+      setError(error)
+    }
+
+  };
+
   const saveItem = (newItem) => {
+    console.log("aca entro")
     try {
       const stringifiedTodos = JSON.stringify(newItem);
       localStorage.setItem(itemName, stringifiedTodos);
@@ -44,11 +60,15 @@ const useLocalStorage = (itemName, inicialValue) => {
 
   };
 
+
+
   return {
     item,
     saveItem,
     loading,
     error,
+    setItem,
+    onChangeOrder
   };
 };
 

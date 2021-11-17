@@ -1,5 +1,5 @@
 
-import React, { Fragment } from "react";
+import React, { Fragment,useEffect,useState } from "react";
 import { useTodos } from "../hooks/useTodos";
 
 import TodoCounter from "../components/todo-counter";
@@ -17,6 +17,8 @@ import { TodosEntry } from "../components/loanding/todo-entry";
 import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
 import TodosResult from "../components/loanding/todo-result";
+import { ReactSortable } from "react-sortablejs";
+
 
 
 
@@ -35,8 +37,17 @@ function App() {
     openModal,
     addTodo, 
     closeModal,
+    onChangeOrder
   } = useTodos();
 
+  const [orderTodos, setOrderTodos] = useState([]);
+
+
+  useEffect(() => {
+    if(orderTodos.length > 0){
+    return  onChangeOrder(orderTodos)
+    }
+  }, [orderTodos])
 
   return (
     <Fragment>
@@ -54,25 +65,31 @@ function App() {
       </TodoHeaderUI>
 
       <TodoList>
-        {error && <TodosError erro={error} />}
-        {loading && <TodosLoading item={searchedTodos} />}
+        {error && <TodosError erro={error} />}   
+        {loading && !error && <TodosLoading item={searchedTodos} />}
         {!loading && !searchedTodos.length && totalTodos ? (
           <TodosResult searchValue={searchValue} />
         ) : (
           !loading && !searchedTodos.length && <TodosEntry />
         )}
         {!loading &&
-          !error &&
+          !error &&(
+            <ReactSortable  list={searchedTodos} setList={setOrderTodos} animation={200} >
+         { 
           searchedTodos.map((item, index) => {
             return (
-              <TodoItem
-                key={index}
-                {...item}
-                onCompled={() => toggleCompleteTodos(item.id)}
-                onDelete={() => DeleteTodo(item.id)}
-              />
-            );
-          })}
+                  <TodoItem
+                    key={index}
+                    {...item}
+                    onCompled={() => toggleCompleteTodos(item.id)}
+                    onDelete={() => DeleteTodo(item.id)}
+                  />
+                );
+              })}
+            </ReactSortable>
+
+          )
+          }
 
         <ModalView>
           <TodoForm addTodo={addTodo} closeModal={closeModal} />
