@@ -1,4 +1,3 @@
-
 import React, { Fragment } from "react";
 import { useTodos } from "../hooks/useTodos";
 
@@ -13,18 +12,16 @@ import { colors } from "../components/styles/colors";
 import { TodoForm } from "../components/todoForm";
 import { TodosError } from "../components/loanding/todo-error";
 import { TodosLoading } from "../components/loanding/todo-loading";
-import { TodosEntry } from "../components/loanding/todo-entry";
+import { EmptyTodos } from "../components/loanding/todo-entry";
 import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
 import TodosResult from "../components/loanding/todo-result";
-
-
 
 function App() {
   const {
     searchValue,
     setSearch,
-    totalTodos, 
+    totalTodos,
     compledTodos,
     error,
     loading,
@@ -33,10 +30,10 @@ function App() {
     DeleteTodo,
     ModalView,
     openModal,
-    addTodo, 
+    addTodo,
     closeModal,
+    onChangeOrder
   } = useTodos();
-
 
   return (
     <Fragment>
@@ -53,27 +50,27 @@ function App() {
         />
       </TodoHeaderUI>
 
-      <TodoList>
-        {error && <TodosError erro={error} />}
-        {loading && <TodosLoading item={searchedTodos} />}
-        {!loading && !searchedTodos.length && totalTodos ? (
-          <TodosResult searchValue={searchValue} />
-        ) : (
-          !loading && !searchedTodos.length && <TodosEntry />
-        )}
-        {!loading &&
-          !error &&
-          searchedTodos.map((item, index) => {
-            return (
-              <TodoItem
-                key={index}
-                {...item}
-                onCompled={() => toggleCompleteTodos(item.id)}
-                onDelete={() => DeleteTodo(item.id)}
-              />
-            );
-          })}
-
+      <TodoList
+        error={error}
+        loading={loading}
+        totalTodos={totalTodos}
+        searchedTodos={searchedTodos}
+        onChangeOrder={onChangeOrder}
+        onError={() => <TodosError />}
+        onEmptyTodos={() => <EmptyTodos />}
+        onLoading={() => <TodosLoading item={searchedTodos} />}
+        onNotResult={() => <TodosResult searchValue={searchValue} />}
+        render={(item) => {
+          return (
+            <TodoItem
+              key={item.id}
+              {...item}
+              onCompled={() => toggleCompleteTodos(item.id)}
+              onDelete={() => DeleteTodo(item.id)}
+            />
+          );
+        }}
+      >
         <ModalView>
           <TodoForm addTodo={addTodo} closeModal={closeModal} />
         </ModalView>
@@ -93,11 +90,9 @@ function App() {
       <FooterUI />
     </Fragment>
   );
-};
-
+}
 
 export default App;
-
 
 const Container = styled.section``;
 

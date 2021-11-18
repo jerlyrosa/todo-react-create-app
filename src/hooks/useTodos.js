@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { v4 as uuidv } from "uuid";
 import useLocalStorage from "./useLocalStorage";
 import { useModal } from "./useModal";
@@ -10,11 +10,12 @@ const useTodos = () =>{
         item:todos,
         saveItem:saveTodos,
         loading, 
-        error
+        error,
+        setItem,
+        onChangeOrder
         } = useLocalStorage('TODO_V1',[]);
 
 
-    
       const [searchValue, setSearch] = useState("");
  
       const {ModalView,openModal,closeModal} = useModal();
@@ -24,7 +25,7 @@ const useTodos = () =>{
       const totalTodos = todos.length;
     
       let searchedTodos = [];
-    
+
       if (!searchValue.length >= 1) {
         searchedTodos = todos;
       }  else {
@@ -65,11 +66,10 @@ const useTodos = () =>{
       };
 
     
-      const DeleteTodo = (text) => {
-        const todoIndex = todos.findIndex((todo) => todo.text === text);
-        const newTodos = [...todos];
-        newTodos.splice(todoIndex, 1);
-    
+      const DeleteTodo = (id) => {
+
+        const newTodos =todos.filter((todo) => todo.id !== id);
+
         saveTodos(newTodos);
       };
     
@@ -86,7 +86,9 @@ const useTodos = () =>{
                 addTodo,
                 ModalView,
                 openModal,
-                closeModal
+                closeModal,
+                setItem,
+                onChangeOrder
             };
       
 
