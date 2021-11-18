@@ -11,7 +11,6 @@ import TodoViewUI from "./todo-view";
 
 const TodoItem = (props) => {
 
-
 const { title, content, completed,creation_date, onCompled, onDelete } = props;
 
 

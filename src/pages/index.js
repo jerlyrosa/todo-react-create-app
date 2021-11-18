@@ -1,5 +1,4 @@
-
-import React, { Fragment,useEffect,useState } from "react";
+import React, { Fragment } from "react";
 import { useTodos } from "../hooks/useTodos";
 
 import TodoCounter from "../components/todo-counter";
@@ -13,20 +12,16 @@ import { colors } from "../components/styles/colors";
 import { TodoForm } from "../components/todoForm";
 import { TodosError } from "../components/loanding/todo-error";
 import { TodosLoading } from "../components/loanding/todo-loading";
-import { TodosEntry } from "../components/loanding/todo-entry";
+import { EmptyTodos } from "../components/loanding/todo-entry";
 import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
 import TodosResult from "../components/loanding/todo-result";
-import { ReactSortable } from "react-sortablejs";
-
-
-
 
 function App() {
   const {
     searchValue,
     setSearch,
-    totalTodos, 
+    totalTodos,
     compledTodos,
     error,
     loading,
@@ -35,19 +30,10 @@ function App() {
     DeleteTodo,
     ModalView,
     openModal,
-    addTodo, 
+    addTodo,
     closeModal,
-    onChangeOrder
+    setOrderTodos,
   } = useTodos();
-
-  const [orderTodos, setOrderTodos] = useState([]);
-
-
-  useEffect(() => {
-    if(orderTodos.length > 0){
-    return  onChangeOrder(orderTodos)
-    }
-  }, [orderTodos])
 
   return (
     <Fragment>
@@ -64,33 +50,27 @@ function App() {
         />
       </TodoHeaderUI>
 
-      <TodoList>
-        {error && <TodosError erro={error} />}   
-        {loading && !error && <TodosLoading item={searchedTodos} />}
-        {!loading && !searchedTodos.length && totalTodos ? (
-          <TodosResult searchValue={searchValue} />
-        ) : (
-          !loading && !searchedTodos.length && <TodosEntry />
-        )}
-        {!loading &&
-          !error &&(
-            <ReactSortable  list={searchedTodos} setList={setOrderTodos} animation={200} >
-         { 
-          searchedTodos.map((item, index) => {
-            return (
-                  <TodoItem
-                    key={index}
-                    {...item}
-                    onCompled={() => toggleCompleteTodos(item.id)}
-                    onDelete={() => DeleteTodo(item.id)}
-                  />
-                );
-              })}
-            </ReactSortable>
-
-          )
-          }
-
+      <TodoList
+        error={error}
+        loading={loading}
+        totalTodos={totalTodos}
+        setOrderTodos={setOrderTodos}
+        searchedTodos={searchedTodos}
+        onError={() => <TodosError />}
+        onEmptyTodos={() => <EmptyTodos />}
+        onLoading={() => <TodosLoading item={searchedTodos} />}
+        onNotResult={() => <TodosResult searchValue={searchValue} />}
+        render={(item) => {
+          return (
+            <TodoItem
+              key={item.id}
+              {...item}
+              onCompled={() => toggleCompleteTodos(item.id)}
+              onDelete={() => DeleteTodo(item.id)}
+            />
+          );
+        }}
+      >
         <ModalView>
           <TodoForm addTodo={addTodo} closeModal={closeModal} />
         </ModalView>
@@ -110,11 +90,9 @@ function App() {
       <FooterUI />
     </Fragment>
   );
-};
-
+}
 
 export default App;
-
 
 const Container = styled.section``;
 

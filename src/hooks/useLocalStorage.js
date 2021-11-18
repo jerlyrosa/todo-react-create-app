@@ -13,7 +13,6 @@ const useLocalStorage = (itemName, inicialValue) => {
 
         let parsedItem;
 
-        console.log(localStorageItem)
         if (!localStorageItem) {
           localStorage.setItem(itemName, JSON.stringify(inicialValue));
           parsedItem = inicialValue;
