@@ -24,7 +24,9 @@ const onEdit =() => alert("It is working")
         <div onClick={onCompled}>
            <Checkbox checked={completed}  />
           </div>
-        <StylesList color={colors.text.base}  checked={completed} >{title}</StylesList>
+          <div  className="handle" >
+            <StylesList color={colors.text.base}  className="handle"  checked={completed} >{title}</StylesList>
+        </div>
         <ModalView title={creation_date}>
              <TodoViewUI {...{title, content}}/>
            </ModalView>
@@ -52,10 +54,10 @@ const Container = styled.div`
  align-items: center;
  padding: 0 2rem;
  word-wrap: anywhere;
- cursor: move;
+ cursor: pointer;
  box-shadow: 0rem 0rem .1rem rgba(149, 153, 159, .16);
 background-color: white;
-margin: 1rem;
+/* margin: 1rem; */
 
 `;
 
@@ -65,7 +67,6 @@ const ButtonIcon= styled.button`
   background: none;
     border: none;
     box-shadow: none;
-
   &:hover{
     cursor: pointer;
       svg {

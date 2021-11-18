@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState } from "react";
 import { v4 as uuidv } from "uuid";
 import useLocalStorage from "./useLocalStorage";
 import { useModal } from "./useModal";
@@ -26,15 +26,6 @@ const useTodos = () =>{
     
       let searchedTodos = [];
 
-      const [orderTodos, setOrderTodos] = useState([]);
-
-
-      useEffect(() => {
-        if(orderTodos.length > 0){
-        return  onChangeOrder(orderTodos)
-        }
-      }, [orderTodos])
-    
       if (!searchValue.length >= 1) {
         searchedTodos = todos;
       }  else {
@@ -97,7 +88,7 @@ const useTodos = () =>{
                 openModal,
                 closeModal,
                 setItem,
-                setOrderTodos,
+                onChangeOrder
             };
       
 

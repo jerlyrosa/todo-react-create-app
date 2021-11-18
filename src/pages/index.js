@@ -32,7 +32,7 @@ function App() {
     openModal,
     addTodo,
     closeModal,
-    setOrderTodos,
+    onChangeOrder
   } = useTodos();
 
   return (
@@ -54,8 +54,8 @@ function App() {
         error={error}
         loading={loading}
         totalTodos={totalTodos}
-        setOrderTodos={setOrderTodos}
         searchedTodos={searchedTodos}
+        onChangeOrder={onChangeOrder}
         onError={() => <TodosError />}
         onEmptyTodos={() => <EmptyTodos />}
         onLoading={() => <TodosLoading item={searchedTodos} />}

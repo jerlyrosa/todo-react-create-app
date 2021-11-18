@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import { ReactSortable } from "react-sortablejs";
 
@@ -14,8 +14,10 @@ const TodoList = (props) => {
     onLoading,
     onNotResult,
     onEmptyTodos,
-    setOrderTodos,
+    onChangeOrder
   } = props;
+
+  const [orderTodos, setOrderTodos] = useState([]);
 
   return (
     <section>
@@ -30,11 +32,15 @@ const TodoList = (props) => {
           <Sortable
             list={searchedTodos}
             setList={setOrderTodos}
-            animation={250}
+            animation={200}
             removeCloneOnHide={true}
             dragClass="drag"
             chosenClass= "select"
             ghostClass="gost"
+            handle='.handle'
+            onEnd={(e=> onChangeOrder(orderTodos))}
+
+            
           >
             {searchedTodos.map(render)}
           </Sortable>
@@ -57,15 +63,11 @@ const Container = styled.div`
 const Sortable = styled(ReactSortable)`
 
 & > .drag{
-    opacity: 0;
+    opacity: 0 !important;
 
 }
 & > .select{
-	/* box-shadow: 0px 0px 20px rgba(149, 153, 159, .16); */
-/* background-color: aliceblue;
-transition: 5s; */
+	box-shadow: 0rem 0rem 1rem rgba(149, 153, 159, .16);
 }
-
-
 
 `;

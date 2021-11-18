@@ -12,7 +12,6 @@ const GlobalStyle =  createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F5F5F5;
 
     //Styles para el footer al fondo
     position: relative;

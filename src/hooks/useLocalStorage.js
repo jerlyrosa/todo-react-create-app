@@ -38,8 +38,8 @@ const useLocalStorage = (itemName, inicialValue) => {
     try {
       const stringifiedTodos = JSON.stringify(newOrder);
       localStorage.setItem(itemName, stringifiedTodos);
-  
       setItem(newOrder);
+  
     } catch (error) {
       setError(error)
     }
@@ -47,7 +47,6 @@ const useLocalStorage = (itemName, inicialValue) => {
   };
 
   const saveItem = (newItem) => {
-    console.log("aca entro")
     try {
       const stringifiedTodos = JSON.stringify(newItem);
       localStorage.setItem(itemName, stringifiedTodos);
