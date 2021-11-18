@@ -52,6 +52,10 @@ const Container = styled.div`
  align-items: center;
  padding: 0 2rem;
  word-wrap: anywhere;
+ cursor: move;
+ box-shadow: 0rem 0rem .1rem rgba(149, 153, 159, .16);
+background-color: white;
+margin: 1rem;
 
 `;
 
