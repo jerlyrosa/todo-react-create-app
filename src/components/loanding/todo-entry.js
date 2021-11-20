@@ -14,5 +14,6 @@ export default EmptyTodos
 
 
 const Title = styled.h3`
+text-align: center;
 color: ${props => props.color};
 `;

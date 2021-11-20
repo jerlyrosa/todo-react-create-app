@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import styled from "styled-components";
 import { ReactSortable } from "react-sortablejs";
+import mq from "./styles/mq";
 
 const TodoList = (props) => {
   const {
@@ -55,9 +56,12 @@ const TodoList = (props) => {
 export default TodoList;
 
 const Container = styled.div`
-  max-width: 60rem;
   word-wrap: break-word;
   margin: 4rem auto 2rem;
+
+  ${mq.md}{
+    margin-right: 2rem;
+  }
 `;
 
 const Sortable = styled(ReactSortable)`

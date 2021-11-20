@@ -16,6 +16,7 @@ import { EmptyTodos } from "../components/loanding/todo-entry";
 import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
 import TodosResult from "../components/loanding/todo-result";
+import mq from "../components/styles/mq";
 
 function App() {
   const {
@@ -37,19 +38,27 @@ function App() {
 
   return (
     <Fragment>
-      <TodoHeaderUI>
+      <TodoHeaderUI >
         <GlobalStyle />
         <Header />
+      </TodoHeaderUI>
 
-        <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} />
+      <Layout>
+        <Aside  > 
+          <section >
+             <h2 style={{paddingTop:"80%"}}>Working...</h2>
+          </section>
+          </Aside>
+        <Container>
 
+        <ContainerSection>
         <TodoSearch
           searchValue={searchValue}
           setSearch={setSearch}
           loading={loading}
         />
-      </TodoHeaderUI>
-
+        </ContainerSection>
+        <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} />
       <TodoList
         error={error}
         loading={loading}
@@ -74,7 +83,7 @@ function App() {
         <ModalView>
           <TodoForm addTodo={addTodo} closeModal={closeModal} />
         </ModalView>
-        <Container as="li">
+        <div as="li">
           <Button
             onClick={openModal}
             bgColor={colors.primary.base}
@@ -84,8 +93,11 @@ function App() {
           >
             Add new
           </Button>
-        </Container>
+        </div>
       </TodoList>
+
+      </Container>
+      </Layout>
 
       <FooterUI />
     </Fragment>
@@ -94,7 +106,48 @@ function App() {
 
 export default App;
 
-const Container = styled.section``;
+const Layout = styled.section`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    ${mq.md} {
+    flex-direction: initial;
+  }
+`;
+
+const Aside = styled.aside`
+color: #606060;
+box-shadow: 0rem 0rem 1rem rgba(140 143 145 / 50%);
+
+${mq.md} {
+    min-height: 77vh;
+    align-self: center;
+    margin-right: 1rem;
+    flex: 20%;
+  }
+
+
+`;
+
+const Container = styled.main`
+  ${mq.md} {
+    align-self: flex-start;
+    flex: 80%;
+  }
+
+`;
+
+const ContainerSection = styled.section`
+  display: flex;
+  justify-content: center;
+  margin-top:4rem;
+  ${mq.md}{
+    margin: 4rem  7rem 2rem 0;
+    justify-content: end;
+  }
+
+`;
+
 
 const Button = styled.button`
   ${({ bgColor, textColor, shadowColor, bgHover }) => css`

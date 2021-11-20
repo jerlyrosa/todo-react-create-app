@@ -15,4 +15,5 @@ export default TodosResult;
 
 const Title = styled.h3`
 color: ${props => props.color};
+text-align: center;
 `;

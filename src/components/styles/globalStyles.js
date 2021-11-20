@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
-import mq from './mq';
+import { createGlobalStyle } from "styled-components";
+import mq from "./mq";
 
-const GlobalStyle =  createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%; /* 1rem = 10px */
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -19,13 +19,24 @@ const GlobalStyle =  createGlobalStyle`
     min-height: 100vh;
   }
 
-  footer{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-  }
+
   //Typography
+
+main{
+    grid-area: main;
+};
+
+aside{
+  grid-area: asidee;
+};
+
+
+footer{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+  }
 
 
   h1,h2,h3,h4,h5,h6{
@@ -141,6 +152,5 @@ text-decoration: none;
 color: white;
 }
 `;
-
 
 export default GlobalStyle;

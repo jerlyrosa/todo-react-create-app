@@ -36,7 +36,7 @@ const onEdit =() => alert("It is working")
         <ButtonIcon  aria-label="tasksEdit"  onClick={onEdit}>
           <IconEdit/>
         </ButtonIcon>
-        <ButtonIcon aria-label="traskDelete" hover="#be0909"onClick={onDelete}>
+        <ButtonIcon aria-label="traskDelete" hover="#be0909" onClick={onDelete}>
            <IconTrash />  
         </ButtonIcon>
 

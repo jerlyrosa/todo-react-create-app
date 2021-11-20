@@ -13,6 +13,7 @@ export const TodosLoading = () => {
 export default TodosLoading;
 
 const Title = styled.h3`
+text-align: center;
 color: ${props => props.color};
 `;
 

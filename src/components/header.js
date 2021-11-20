@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { IconTaks } from "./icons/icons";
 import { colors } from "./styles/colors";
+import mq from "./styles/mq";
+
 
 const Header = () => {
   return (
@@ -24,6 +26,9 @@ const Container = styled.div`
   box-shadow: 0 0.25rem 0.8125rem rgba(0, 0, 0, 0.3);
   color: ${(props) => props.color};
   background-color: ${(props) => props.bgColor};
+  ${mq.md}{
+    justify-content: start;
+  }
 `;
 
 const Title = styled.h1`
