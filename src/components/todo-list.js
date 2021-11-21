@@ -22,7 +22,9 @@ const TodoList = (props) => {
 
   return (
     <section>
+
       <Container>
+
         {error && onError()}
         {loading && !error && onLoading()}
         {!loading && !searchedTodos.length && totalTodos
@@ -47,6 +49,7 @@ const TodoList = (props) => {
           </Sortable>
         )}
 
+
         <ul style={{ padding: 0 }}>{children}</ul>
       </Container>
     </section>
@@ -60,7 +63,7 @@ const Container = styled.div`
   margin: 4rem auto 2rem;
 
   ${mq.md}{
-    margin-right: 2rem;
+    margin-right: 5rem;
   }
 `;
 
@@ -73,5 +76,4 @@ const Sortable = styled(ReactSortable)`
 & > .select{
 	box-shadow: 0rem 0rem 1rem rgba(149, 153, 159, .16);
 }
-
 `;

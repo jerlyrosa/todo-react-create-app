@@ -189,6 +189,50 @@ export const Iconmaximize = () => (
   </svg>
 );
 
+export const ArrowsDiagonal = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-arrows-diagonal"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    strokeWidth="2"
+    stroke="#575859"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <polyline points="16 4 20 4 20 8"></polyline>
+    <line x1="14" y1="10" x2="20" y2="4"></line>
+    <polyline points="8 20 4 20 4 16"></polyline>
+    <line x1="4" y1="20" x2="10" y2="14"></line>
+  </svg>
+);
+
+export const IconGripVertical = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-grip-vertical"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    strokeWidth="2"
+    stroke="#575859"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <circle cx="9" cy="5" r="1"></circle>
+    <circle cx="9" cy="12" r="1"></circle>
+    <circle cx="9" cy="19" r="1"></circle>
+    <circle cx="15" cy="5" r="1"></circle>
+    <circle cx="15" cy="12" r="1"></circle>
+    <circle cx="15" cy="19" r="1"></circle>
+  </svg>
+);
+
 // export const Icon = () => (
 
 //   );
