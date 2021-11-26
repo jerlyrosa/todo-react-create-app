@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { useTodos } from "../hooks/useTodos";
-
 import TodoCounter from "../components/todo-counter";
 import TodoSearch from "../components/todo-search";
 import TodoList from "../components/todo-list";
@@ -17,7 +16,6 @@ import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
 import TodosResult from "../components/loanding/todo-result";
 import mq from "../components/styles/mq";
-import UserName from "../components/user";
 
 function App() {
   const {
@@ -34,14 +32,18 @@ function App() {
     openModal,
     addTodo,
     closeModal,
-    onChangeOrder
+    onChangeOrder,
+    UserData,
+    userName
   } = useTodos();
+  
 
   return (
     <Fragment>
+      { UserData()}
       <TodoHeaderUI >
         <GlobalStyle />
-        <Header />
+        <Header userName={userName} />
       </TodoHeaderUI>
 
       <Layout>
@@ -99,7 +101,6 @@ function App() {
 
       </Container>
       </Layout>
-<UserName/>
       <FooterUI />
     </Fragment>
   );

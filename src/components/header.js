@@ -5,7 +5,10 @@ import { colors } from "./styles/colors";
 import mq from "./styles/mq";
 
 
-const Header = () => {
+const Header = ({userName}) => {
+  console.log(userName)
+
+
   return (
     <section>
       <Container color={colors.text_color} bgColor={colors.primary.base}>
@@ -16,7 +19,7 @@ const Header = () => {
         </StylesIconTasks>
         </Name>
         <User>
-        <h6>Hola, Jerly De La Rosa</h6>
+        <h6>{`Hola, ${userName.name} `}</h6>
         </User>
       </Container>
     </section>

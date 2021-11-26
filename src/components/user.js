@@ -3,31 +3,25 @@ import styled, { css } from "styled-components";
 import { useModal } from "../hooks/useModal";
 import { colors } from "./styles/colors";
 
-export const UserName = () => {
-    const [user, setUser] = useState();
-  const { ModalView, openModal, closeModal } = useModal();
+ const UserForm = ({closeModal}) => {
+     
+    const [user, setUser] = useState([]);
 
-  const getUser = (data) => {
-    return localStorage.setItem("UserName", JSON.stringify(data));
-  };
-
-  useEffect(() => {
-    if (localStorage.getItem("UserName") === null) {
-      openModal();
-    }
-  }, []);
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if (user.length > 0) {
-      getUser({ user: user });
-      closeModal(false);
-    }
-  };
-
-
+    const getUser = (data) => {
+        return localStorage.setItem("UserName", JSON.stringify(data));
+    };
+    
+    const onSubmit = (event) => {
+        event.preventDefault();
+        if (user.length > 0) {
+            getUser({ user:{
+            name: user
+            }});
+            closeModal(false);
+        }
+    };
+    
   return (
-    <ModalView>
       <Form onSubmit={onSubmit}>
         <Label>
           <Title color={colors.text.base}>Write your Name</Title>
@@ -35,8 +29,8 @@ export const UserName = () => {
         <TextInput
           placeholder="Write a Name"
           value={user}
-          onChange={(e) =>setUser(e.target.value)}
-          maxLength={30}
+          onChange={(e)=>setUser(e.target.value)}
+          maxLength={20}
         />
         
         <Button
@@ -49,11 +43,27 @@ export const UserName = () => {
           Add
         </Button>
       </Form>
-    </ModalView>
   );
 };
 
-export default UserName;
+const  UserData =()=>{
+    const { ModalView, openModal, closeModal } = useModal();
+    useEffect(() => {
+        if (localStorage.getItem("UserName") === null) {
+            openModal();
+        }
+    }, []);
+
+return(
+    <ModalView>
+        <UserForm closeModal={closeModal}/>
+    </ModalView>
+)
+
+};
+
+export default  UserData;
+
 
 const Form = styled.form`
   background-color: #fff;
@@ -111,3 +121,6 @@ const Button = styled.button`
     }
   `}
 `;
+
+
+
