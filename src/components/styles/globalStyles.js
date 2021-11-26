@@ -73,7 +73,7 @@ footer{
         font-size: 2.7rem;
     }
     ${mq.xl}{
-        font-size: 2.7rem;
+        font-size: 3rem;
     }  
  }
 

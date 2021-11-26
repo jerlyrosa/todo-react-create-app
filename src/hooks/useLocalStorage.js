@@ -6,10 +6,10 @@ const useLocalStorage = (itemName, inicialValue) => {
   const [error, setError] = useState(false);
   const [item, setItem] = useState(inicialValue);
 
-
   useEffect(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName);
+
 
         let parsedItem;
 
@@ -29,11 +29,11 @@ const useLocalStorage = (itemName, inicialValue) => {
         setError(error)
         
       }
+
     
   }, [])
 
-
-
+ 
   const onChangeOrder = (newOrder) => {
     try {
       const stringifiedTodos = JSON.stringify(newOrder);

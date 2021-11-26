@@ -17,6 +17,7 @@ import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
 import TodosResult from "../components/loanding/todo-result";
 import mq from "../components/styles/mq";
+import UserName from "../components/user";
 
 function App() {
   const {
@@ -46,7 +47,7 @@ function App() {
       <Layout>
         <Aside  > 
           <section >
-             <h2 style={{paddingTop:"80%"}}>Working...</h2>
+             <h2 style={{paddingTop:"80%" }}>Working...</h2>
           </section>
           </Aside>
         <Container>
@@ -98,7 +99,7 @@ function App() {
 
       </Container>
       </Layout>
-
+<UserName/>
       <FooterUI />
     </Fragment>
   );
@@ -116,8 +117,15 @@ const Layout = styled.section`
 `;
 
 const Aside = styled.aside`
-color: #606060;
-box-shadow: 0rem 0rem 1rem rgba(140 143 145 / 50%);
+/* visibility: hidden; */
+display: none;
+
+${mq.md}{
+  display: initial;
+
+  color: #606060;
+  box-shadow: 0rem 0rem 1rem rgba(140 143 145 / 50%);
+}
 
 ${mq.md} {
     min-height: 77vh;
