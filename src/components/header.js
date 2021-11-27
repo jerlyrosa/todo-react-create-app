@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { IconTaks } from "./icons/icons";
+import { IconTaks, IconUserCircle } from "./icons/icons";
 import { colors } from "./styles/colors";
 import mq from "./styles/mq";
 
 
 const Header = ({userName}) => {
-  console.log(userName)
 
 
   return (
@@ -19,7 +18,8 @@ const Header = ({userName}) => {
         </StylesIconTasks>
         </Name>
         <User>
-        <h6>{`Hola, ${userName.name} `}</h6>
+          <IconUserCircle/>
+        <span>{`${userName.name} `}</span>
         </User>
       </Container>
     </section>
@@ -55,6 +55,10 @@ const StylesIconTasks = styled.div`
 const User = styled.div`
   display: none;
   ${mq.md}{
-    display: initial;
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+    margin-right: 10rem;
+    /* display: initial; */
   }
 `

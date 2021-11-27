@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useTodos } from "../hooks/useTodos";
-import TodoCounter from "../components/todo-counter";
+// import TodoCounter from "../components/todo-counter";
 import TodoSearch from "../components/todo-search";
 import TodoList from "../components/todo-list";
 import TodoItem from "../components/todo-item";
@@ -22,7 +22,7 @@ function App() {
     searchValue,
     setSearch,
     totalTodos,
-    compledTodos,
+    // compledTodos,
     error,
     loading,
     searchedTodos,
@@ -61,7 +61,7 @@ function App() {
           loading={loading}
         />
         </ContainerSection>
-        <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} />
+        {/* <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} /> */}
       <TodoList
         error={error}
         loading={loading}
