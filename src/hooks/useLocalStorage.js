@@ -5,11 +5,12 @@ const useLocalStorage = (itemName, inicialValue) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [item, setItem] = useState(inicialValue);
-
+  const [userName, setUser] = useState({name:"User"});
 
   useEffect(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName);
+
 
         let parsedItem;
 
@@ -17,7 +18,6 @@ const useLocalStorage = (itemName, inicialValue) => {
           localStorage.setItem(itemName, JSON.stringify(inicialValue));
           parsedItem = inicialValue;
         } else {
-
 
           parsedItem = JSON.parse(localStorageItem);
         }
@@ -29,9 +29,9 @@ const useLocalStorage = (itemName, inicialValue) => {
         setError(error)
         
       }
+
     
   }, [])
-
 
 
   const onChangeOrder = (newOrder) => {
@@ -59,6 +59,22 @@ const useLocalStorage = (itemName, inicialValue) => {
   };
 
 
+// ( ()=>{
+
+  useEffect(() => {
+  const localStorageUser= localStorage.getItem("UserName");
+
+    if(localStorage.getItem("UserName") !== null){
+          let {user} = JSON.parse(localStorageUser);
+          setUser(user)
+
+    }    
+  
+    }
+  ,[localStorage.getItem("UserName")])
+
+
+// })()
 
   return {
     item,
@@ -66,7 +82,8 @@ const useLocalStorage = (itemName, inicialValue) => {
     loading,
     error,
     setItem,
-    onChangeOrder
+    onChangeOrder,
+    userName
   };
 };
 

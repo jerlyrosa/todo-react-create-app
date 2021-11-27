@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { useTodos } from "../hooks/useTodos";
-
-import TodoCounter from "../components/todo-counter";
+// import TodoCounter from "../components/todo-counter";
 import TodoSearch from "../components/todo-search";
 import TodoList from "../components/todo-list";
 import TodoItem from "../components/todo-item";
@@ -23,7 +22,7 @@ function App() {
     searchValue,
     setSearch,
     totalTodos,
-    compledTodos,
+    // compledTodos,
     error,
     loading,
     searchedTodos,
@@ -33,20 +32,24 @@ function App() {
     openModal,
     addTodo,
     closeModal,
-    onChangeOrder
+    onChangeOrder,
+    UserData,
+    userName
   } = useTodos();
+  
 
   return (
     <Fragment>
+      { UserData()}
       <TodoHeaderUI >
         <GlobalStyle />
-        <Header />
+        <Header userName={userName} />
       </TodoHeaderUI>
 
       <Layout>
         <Aside  > 
           <section >
-             <h2 style={{paddingTop:"80%"}}>Working...</h2>
+             <h2 style={{paddingTop:"80%" }}>Working...</h2>
           </section>
           </Aside>
         <Container>
@@ -58,7 +61,7 @@ function App() {
           loading={loading}
         />
         </ContainerSection>
-        <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} />
+        {/* <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} /> */}
       <TodoList
         error={error}
         loading={loading}
@@ -98,7 +101,6 @@ function App() {
 
       </Container>
       </Layout>
-
       <FooterUI />
     </Fragment>
   );
@@ -116,8 +118,15 @@ const Layout = styled.section`
 `;
 
 const Aside = styled.aside`
-color: #606060;
-box-shadow: 0rem 0rem 1rem rgba(140 143 145 / 50%);
+/* visibility: hidden; */
+display: none;
+
+${mq.md}{
+  display: initial;
+
+  color: #606060;
+  box-shadow: 0rem 0rem 1rem rgba(140 143 145 / 50%);
+}
 
 ${mq.md} {
     min-height: 77vh;
