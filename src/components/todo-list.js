@@ -93,7 +93,7 @@ const ContainerSection = styled.div`
     "c d d"; */
 
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   word-wrap: anywhere;
   /* background-color: #dc2060; */
   /* color: white; */
@@ -102,9 +102,9 @@ const ContainerSection = styled.div`
   background-color: #9c27b0;
 
   & > span {
-text-align: center;
-font-size: 1.5rem;
-color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
   } 
 
 `;
