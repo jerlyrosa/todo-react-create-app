@@ -93,7 +93,7 @@ const ContainerSection = styled.div`
     "c d d"; */
 
   align-items: center;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   word-wrap: anywhere;
   /* background-color: #dc2060; */
   /* color: white; */

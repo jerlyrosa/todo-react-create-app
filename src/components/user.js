@@ -3,13 +3,19 @@ import styled, { css } from "styled-components";
 import { useModal } from "../hooks/useModal";
 import { colors } from "./styles/colors";
 
- const UserForm = ({closeModal}) => {
+ const UserForm = ({closeModal,userName}) => {
      
     const [user, setUser] = useState([]);
 
     const getUser = (data) => {
         return localStorage.setItem("UserName", JSON.stringify(data));
+
     };
+
+    useEffect(() => {
+      setUser(userName !== null ? userName.name: user)
+    }, [userName])
+
     
     const onSubmit = (event) => {
         event.preventDefault();
@@ -24,7 +30,7 @@ import { colors } from "./styles/colors";
   return (
       <Form onSubmit={onSubmit}>
         <Label>
-          <Title color={colors.text.base}>Write your Name</Title>
+          <Title color={colors.text.base}>{userName !== null ? "Edit your name":"Write your Name"}</Title>
         </Label>
         <TextInput
           placeholder="Write a Name"
@@ -46,17 +52,19 @@ import { colors } from "./styles/colors";
   );
 };
 
-const  UserData =()=>{
+const  UserData =(userName, openEditName, setOpenEditName)=>{
     const { ModalView, openModal, closeModal } = useModal();
+
     useEffect(() => {
-        if (localStorage.getItem("UserName") === null) {
-            openModal();
+        if (localStorage.getItem("UserName") === null || openEditName) {
+          setOpenEditName(false)
+          openModal();
         }
-    }, []);
+    }, [openEditName]);
 
 return(
     <ModalView>
-        <UserForm closeModal={closeModal}/>
+        <UserForm closeModal={closeModal} userName={userName}/>
     </ModalView>
 )
 
