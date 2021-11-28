@@ -30,7 +30,7 @@ const CheckboxContainer = styled.div`
     cursor: pointer;
     ${mq.md} {
       width: 20rem;
-      height: 4rem;
+      height: 4.5rem;
       background: ${(props) => props.color};
       align-items: center;
       justify-content: center;

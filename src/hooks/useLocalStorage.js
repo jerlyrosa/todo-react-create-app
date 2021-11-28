@@ -5,12 +5,11 @@ const useLocalStorage = (itemName, inicialValue) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [item, setItem] = useState(inicialValue);
-  const [userName, setUser] = useState({name:"User"});
+  const [userName, setUser] = useState(null);
 
   useEffect(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName);
-
 
         let parsedItem;
 
@@ -59,7 +58,6 @@ const useLocalStorage = (itemName, inicialValue) => {
   };
 
 
-// ( ()=>{
 
   useEffect(() => {
   const localStorageUser= localStorage.getItem("UserName");
@@ -72,9 +70,6 @@ const useLocalStorage = (itemName, inicialValue) => {
   
     }
   ,[localStorage.getItem("UserName")])
-
-
-// })()
 
   return {
     item,
