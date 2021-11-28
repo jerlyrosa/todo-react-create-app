@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useTodos } from "../hooks/useTodos";
 // import TodoCounter from "../components/todo-counter";
 import TodoSearch from "../components/todo-search";
@@ -34,16 +34,16 @@ function App() {
     closeModal,
     onChangeOrder,
     UserData,
-    userName
+    userName,
   } = useTodos();
   
-
+const [openEditName, setOpenEditName] = useState(false);
   return (
     <Fragment>
-      { UserData()}
+      { UserData(userName, openEditName, setOpenEditName)}
       <TodoHeaderUI >
         <GlobalStyle />
-        <Header userName={userName} />
+        <Header userName={userName} setOpenEditName={setOpenEditName}/>
       </TodoHeaderUI>
 
       <Layout>
@@ -98,7 +98,6 @@ function App() {
           </Button>
         </div>
       </TodoList>
-
       </Container>
       </Layout>
       <FooterUI />

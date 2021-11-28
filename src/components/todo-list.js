@@ -102,9 +102,9 @@ const ContainerSection = styled.div`
   background-color: #9c27b0;
 
   & > span {
-text-align: center;
-font-size: 1.5rem;
-color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
   } 
 
 `;

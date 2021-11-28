@@ -69,7 +69,7 @@ const Container = styled.div`
 `;
 
 const ContainerCol = styled.div`
-  margin: 0rem 1rem;
+  margin: 1.5rem 1rem;
   overflow: hidden;
   max-height: 2rem;
 `;
