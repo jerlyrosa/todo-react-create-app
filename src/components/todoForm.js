@@ -14,7 +14,7 @@ export const TodoForm = ({ addTodo, closeModal}) => {
 
     const onSubmit = (event) => {
       event.preventDefault();
-      if (newValueTitle.length > 0 ) {
+      if (newValueTitle.length > 0  && newValueTitle.trim() !== "") {
         addTodo({ title: newValueTitle, content: newValueContent });
         closeModal(false);
       }
@@ -29,6 +29,7 @@ export const TodoForm = ({ addTodo, closeModal}) => {
                 placeholder="Write a Title" 
                 value={newValueTitle}
                 onChange={(e)=>setNewValueTitle(e.target.value)}
+                required={true}
                 
              />
          <TextTarea

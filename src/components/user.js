@@ -19,7 +19,7 @@ import { colors } from "./styles/colors";
     
     const onSubmit = (event) => {
         event.preventDefault();
-        if (user.length > 0) {
+        if (user.length > 0  && user.trim() !== "") {
             getUser({ user:{
             name: user
             }});
@@ -46,7 +46,7 @@ import { colors } from "./styles/colors";
           shadowColor={"rgba(115, 185, 255, 0.5)"}
           bgHover={colors.cta_hover}
         >
-          Add
+       {userName !== null ? "Change":"Add"}
         </Button>
       </Form>
   );
