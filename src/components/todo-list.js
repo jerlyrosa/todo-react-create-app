@@ -10,6 +10,7 @@ const TodoList = (props) => {
     loading,
     totalTodos,
     searchedTodos,
+    compledTodos,
     render,
     onError,
     onLoading,
@@ -25,10 +26,8 @@ const TodoList = (props) => {
 
       <Container>
           <ContainerSection>
-          <span>Working...</span>
-          {/* <span></span> */}
-
-
+          Completed <span style={{ fontWeight: 900 }}>{compledTodos} </span>of{" "}
+          <span style={{ fontWeight: 900  }}>{totalTodos}</span> Tasks
           </ContainerSection>
         {error && onError()}
         {loading && !error && onLoading()}
@@ -84,13 +83,14 @@ const Sortable = styled(ReactSortable)`
 `;
 
 const ContainerSection = styled.div`
-  display: grid;
-  grid-template-columns:10fr;
+  /* display: grid; */
+  /* grid-template-columns:10fr; */
   /* grid-template-areas: "a b c";
   word-wrap: anywhere;
 
   /* "a a b"
     "c d d"; */
+    color: white;
 
   align-items: center;
   padding: 0 2rem;
@@ -100,11 +100,6 @@ const ContainerSection = styled.div`
   font-size: 1.5rem;
   padding: 1rem 0;
   background-color: #9c27b0;
-
-  & > span {
   text-align: center;
-  font-size: 1.5rem;
-  color: white;
-  } 
 
 `;

@@ -16,13 +16,15 @@ import FooterUI from "../components/footer";
 import { TodoHeaderUI } from "../components/todo-header";
 import TodosResult from "../components/loanding/todo-result";
 import mq from "../components/styles/mq";
+import ragnar from '../components/img/ragnar.png'
+
 
 function App() {
   const {
     searchValue,
     setSearch,
     totalTodos,
-    // compledTodos,
+    compledTodos,
     error,
     loading,
     searchedTodos,
@@ -48,9 +50,8 @@ const [openEditName, setOpenEditName] = useState(false);
 
       <Layout>
         <Aside  > 
-          <section >
-             <h2 style={{paddingTop:"80%" }}>Working...</h2>
-          </section>
+             <h5>Lucky Ragnar Lothbrok.</h5>
+             <img style={{width:"100%"}} src={ragnar} alt="Lucky Ragnar Lothbrok"></img>
           </Aside>
         <Container>
 
@@ -61,13 +62,13 @@ const [openEditName, setOpenEditName] = useState(false);
           loading={loading}
         />
         </ContainerSection>
-        {/* <TodoCounter totalTodos={totalTodos} compledTodos={compledTodos} /> */}
       <TodoList
         error={error}
         loading={loading}
         totalTodos={totalTodos}
         searchedTodos={searchedTodos}
         onChangeOrder={onChangeOrder}
+        compledTodos={compledTodos}
         onError={() => <TodosError />}
         onEmptyTodos={() => <EmptyTodos />}
         onLoading={() => <TodosLoading item={searchedTodos} />}
@@ -117,24 +118,20 @@ const Layout = styled.section`
 `;
 
 const Aside = styled.aside`
-/* visibility: hidden; */
-display: none;
+  display: none;
+  ${mq.md} {
+    display: initial;
 
-${mq.md}{
-  display: initial;
-
-  color: #606060;
-  box-shadow: 0rem 0rem 1rem rgba(140 143 145 / 50%);
-}
-
-${mq.md} {
-    min-height: 77vh;
-    align-self: center;
-    margin-right: 1rem;
-    flex: 20%;
+    color: #606060;
   }
 
-
+  ${mq.md} {
+    min-height: 81vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const Container = styled.main`
