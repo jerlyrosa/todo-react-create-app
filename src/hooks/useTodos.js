@@ -4,102 +4,87 @@ import UserData from "../components/user";
 import useLocalStorage from "./useLocalStorage";
 import { useModal } from "./useModal";
 
+const useTodos = () => {
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+    setItem,
+    onChangeOrder,
+    userName,
+  } = useLocalStorage("TODO_V1", []);
 
-const useTodos = () =>{
+  const [searchValue, setSearch] = useState("");
 
-    const { 
-        item:todos,
-        saveItem:saveTodos,
-        loading, 
-        error,
-        setItem,
-        onChangeOrder,
-        userName
-        } = useLocalStorage('TODO_V1',[]);
+  const { ModalView, openModal, closeModal } = useModal();
 
+  const compledTodos = todos.filter((todo) => todo.completed).length;
 
-      const [searchValue, setSearch] = useState("");
+  const totalTodos = todos.length;
 
+  let searchedTodos = [];
 
-      const {ModalView,openModal,closeModal} = useModal();
+  if (!searchValue.length >= 1) {
+    searchedTodos = todos;
+  } else {
+    searchedTodos = todos.filter((todo) => {
+      const todoText = todo.title.toLowerCase();
+      const searchText = searchValue.toLowerCase();
 
-      const compledTodos = todos.filter((todo) => todo.completed).length;
-    
-      const totalTodos = todos.length;
-    
-      let searchedTodos = [];
+      return todoText.includes(searchText);
+    });
+  }
 
-      if (!searchValue.length >= 1) {
-        searchedTodos = todos;
-      }  else {
-        searchedTodos = todos.filter((todo) => {
-          const todoText = todo.title.toLowerCase();
-          const searchText = searchValue.toLowerCase();
+  const toggleCompleteTodos = (id) => {
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
+    const newTodos = [...todos];
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
 
-          return todoText.includes(searchText) 
-        });
-    
-      }
+    saveTodos(newTodos);
+  };
 
-      const toggleCompleteTodos = (id) => {
-        const todoIndex = todos.findIndex((todo) => todo.id === id);
-        const newTodos = [...todos];
-        newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    
-        saveTodos(newTodos);
-      };
+  //add todo
 
-        //add todo
+  const addTodo = ({ ...props }) => {
+    const { title, content } = props;
 
-      const addTodo = ({...props}) => {
-          const {
-            title,
-            content
-          } = props;
+    const newTodos = [...todos];
+    newTodos.push({
+      id: uuidv(),
+      completed: false,
+      creation_date: new Date().toLocaleString(),
+      title,
+      content,
+    });
+    saveTodos(newTodos);
+  };
 
-        const newTodos = [...todos];
-        newTodos.push({
-          id:uuidv(),
-          completed:false,
-          creation_date:new Date().toLocaleString(),
-          title,
-          content,
-        })    
-        saveTodos(newTodos);
-      };
+  const DeleteTodo = (id) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
 
-    
-      const DeleteTodo = (id) => {
+    saveTodos(newTodos);
+  };
 
-        const newTodos =todos.filter((todo) => todo.id !== id);
+  return {
+    loading,
+    error,
+    totalTodos,
+    compledTodos,
+    searchValue,
+    setSearch,
+    searchedTodos,
+    toggleCompleteTodos,
+    DeleteTodo,
+    addTodo,
+    ModalView,
+    openModal,
+    closeModal,
+    setItem,
+    onChangeOrder,
+    UserData,
+    userName,
+  };
+};
 
-        saveTodos(newTodos);
-      };
-
-
-
-        return{
-                loading,
-                error,
-                totalTodos,
-                compledTodos,
-                searchValue,
-                setSearch,
-                searchedTodos,
-                toggleCompleteTodos,
-                DeleteTodo,
-                addTodo,
-                ModalView,
-                openModal,
-                closeModal,
-                setItem,
-                onChangeOrder,
-                UserData,
-                userName,
-            };
-      
-
-}
-
-
-export {  useTodos };
+export { useTodos };

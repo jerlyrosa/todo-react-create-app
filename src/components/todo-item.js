@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { useModal } from "../hooks/useModal";
 import Checkbox from "./checkbox";
 import {
-  IconEdit,
+  // IconEdit,
   IconTrash,
   ArrowsDiagonal,
   IconGripVertical,
@@ -19,7 +19,7 @@ const TodoItem = (props) => {
 
   const { ModalView, openModal } = useModal();
 
-  const onEdit = () => alert("It is working");
+  // const onEdit = () => alert("It is working");
 
   return (
     <li>
@@ -45,9 +45,9 @@ const TodoItem = (props) => {
         <ButtonIcon aria-label="tasksMaximize" onClick={openModal}>
           <ArrowsDiagonal />
         </ButtonIcon>
-        <ButtonIcon aria-label="tasksEdit" onClick={onEdit}>
+        {/* <ButtonIcon aria-label="tasksEdit" onClick={onEdit}>
           <IconEdit />
-        </ButtonIcon>
+        </ButtonIcon> */}
         <ButtonIcon aria-label="traskDelete" hover="#be0909" onClick={onDelete}>
           <IconTrash />
         </ButtonIcon>
